@@ -4,8 +4,8 @@
   </description>
 
   <!-- set global properties for this build -->
-  <property name="src" location="src"/>
-  <property name="test" location="test"/>
+  <property name="src" location="src/main/java"/>
+  <property name="test" location="src/test/java"/>
   <property name="build" location="build"/>
   <property name="dist" location="dist"/>
 
@@ -141,8 +141,9 @@
     </java>
   </target>
 
-  <target name="run_timing" depends="mathematics, numbers, search, sequences, strings, sorts, data_structures" />
+  <!-- <target name="run_timing" depends="mathematics, numbers, search, sequences, strings, sorts, data_structures" /> -->
+  <!-- <target name="test" depends="run_tests, run_timing" /> -->
 
-  <target name="test" depends="run_tests, run_timing" />
+  <target name="test" depends="run_tests" />
 
 </project>
