@@ -31,4 +31,4 @@ env:
 #  - TEST_SUITE=data_structures
 #  - TEST_SUITE=sorts
 
-script: "ant $TEST_SUITE"
+script: mvn test
