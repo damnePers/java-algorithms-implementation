@@ -58,6 +58,7 @@ public class IntervalTree<O extends Object> {
      *            is a list of IntervalData objects
      */
     public IntervalTree(List<IntervalData<O>> intervals) {
+        public static boolean[] branchesVisited = new boolean[19];
         if (intervals.size() <= 0)
             return;
 
@@ -235,34 +236,60 @@ public class IntervalTree<O extends Object> {
          *            of range to query for.
          * @return data for range.
          */
-        public IntervalData<O> query(long start, long end) {
+        public IntervalData<O> query(long start, long end) {        //1
+            branchesVisited[0] = true;
             IntervalData<O> results = null;
-            for (IntervalData<O> data : overlap) {
-                if (data.start > end)
+            for (IntervalData<O> data : overlap) {  //2
+                branchesVisited[1] = true;
+                if (data.start > end){  //3
+                    branchesVisited[2] = true;
                     break;
+                }
                 IntervalData<O> temp = data.query(start, end);
-                if (results == null && temp != null)
+                if (results == null && temp != null){       //4, 5
+                    branchesVisited[3] = true;
+                    branchesVisited[4] = true;
                     results = temp;
-                else if (results != null && temp != null)
+                }   
+                else if (results != null && temp != null){     //6, 7
+                    branchesVisited[5] = true;
+                    branchesVisited[6] = true;
                     results.combined(temp);
+                }
             }
 
-            if (left != null && start < center) {
+            if (left != null && start < center) {   //8, 9
+                branchesVisited[7] = true;
+                branchesVisited[8] = true;
                 IntervalData<O> temp = left.query(start, end);
-                if (temp != null && results == null)
+                if (temp != null && results == null){       //10, 11
+                    branchesVisited[9] = true;
+                    branchesVisited[10] = true;
                     results = temp;
-                else if (results != null && temp != null)
+                }
+                else if (results != null && temp != null){  //12, 13
+                    branchesVisited[11] = true;
+                    branchesVisited[12] = true;
                     results.combined(temp);
+                } 
             }
 
-            if (right != null && end >= center) {
+            if (right != null && end >= center) {   //14, 15
+                branchesVisited[13] = true;
+                branchesVisited[14] = true;
                 IntervalData<O> temp = right.query(start, end);
-                if (temp != null && results == null)
+                if (temp != null && results == null){   //16, 17
+                    branchesVisited[15] = true;
+                    branchesVisited[16] = true;
                     results = temp;
-                else if (results != null && temp != null)
+                }
+                    
+                else if (results != null && temp != null){  //18, 19
+                    branchesVisited[17] = true;
+                    branchesVisited[18] = true;
                     results.combined(temp);
+                }
             }
-
             return results;
         }
 
