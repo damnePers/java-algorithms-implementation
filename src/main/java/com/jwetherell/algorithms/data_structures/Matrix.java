@@ -2,6 +2,7 @@ package com.jwetherell.algorithms.data_structures;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -15,6 +16,9 @@ import java.util.Comparator;
 @SuppressWarnings("unchecked")
 public class Matrix<T extends Number> {
 
+    // Start measuring branch coverage
+    public static boolean[] branchesVisited = new boolean[14];
+    // End measuring branch coverage
     private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
@@ -156,41 +160,62 @@ public class Matrix<T extends Number> {
         return identityMatrix;
     }
 
-    public Matrix<T> add(Matrix<T> input) {
+    public Matrix<T> add(Matrix<T> input) throws IllegalArgumentException{
         Matrix<T> output = new Matrix<T>(this.rows, this.cols);
-        if ((this.cols != input.cols) || (this.rows != input.rows))
+        if ((this.cols != input.cols) || (this.rows != input.rows)) {
+            branchesVisited[0] = true;  // branch 0
             return output;
-        for (int r = 0; r < output.rows; r++) {
-            for (int c = 0; c < output.cols; c++) {
-                for (int i = 0; i < cols; i++) {
+        } else {
+            branchesVisited[9] = true; // branch 9
+        }
+        int r = 0;
+        int c = 0;
+        int i = 0;
+        for (r = 0; r < output.rows; r++) {
+            branchesVisited[1] = true;  // branch 1
+            for (c = 0; c < output.cols; c++) {
+                branchesVisited[2] = true;  // branch 2
+                for (i = 0; i < cols; i++) {
+                    branchesVisited[3] = true;  // branch 3
                     T m1 = this.get(r, c);
                     T m2 = input.get(r, c);
                     T result;
                     /* TODO: This is ugly and how to handle number overflow? */
                     if (m1 instanceof BigDecimal || m2 instanceof BigDecimal) {
-                        BigDecimal result2 = ((BigDecimal)m1).add((BigDecimal)m2);
-                        result = (T)result2;
+                        branchesVisited[4] = true;  // branch 4
+                        BigDecimal result2 = ((BigDecimal) m1).add((BigDecimal) m2);
+                        result = (T) result2;
                     } else if (m1 instanceof BigInteger || m2 instanceof BigInteger) {
-                        BigInteger result2 = ((BigInteger)m1).add((BigInteger)m2);
-                        result = (T)result2;
+                        branchesVisited[5] = true;  // branch 5
+                        BigInteger result2 = ((BigInteger) m1).add((BigInteger) m2);
+                        result = (T) result2;
                     } else if (m1 instanceof Long || m2 instanceof Long) {
+                        branchesVisited[6] = true;  // branch 6
                         Long result2 = (m1.longValue() + m2.longValue());
-                        result = (T)result2;
+                        result = (T) result2;
                     } else if (m1 instanceof Double || m2 instanceof Double) {
+                        branchesVisited[7] = true;  // branch 7
                         Double result2 = (m1.doubleValue() + m2.doubleValue());
-                        result = (T)result2;
+                        result = (T) result2;
                     } else if (m1 instanceof Float || m2 instanceof Float) {
+                        branchesVisited[8] = true;  // branch 8
                         Float result2 = (m1.floatValue() + m2.floatValue());
-                        result = (T)result2;
+                        result = (T) result2;
                     } else {
+                        branchesVisited[13] = true;  // branch 13
                         // Integer
                         Integer result2 = (m1.intValue() + m2.intValue());
-                        result = (T)result2;
+                        result = (T) result2;
                     }
                     output.set(r, c, result);
                 }
             }
         }
+        // Start counting branches
+        if (r >= output.rows) branchesVisited[10] = true;
+        if (c >= output.cols) branchesVisited[11] = true;
+        if (i >= cols) branchesVisited[12] = true;
+        // End counting branches
         return output;
     }
 
