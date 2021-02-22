@@ -164,7 +164,7 @@ public class Matrix<T extends Number> {
         Matrix<T> output = new Matrix<T>(this.rows, this.cols);
         if ((this.cols != input.cols) || (this.rows != input.rows)) {
             branchesVisited[0] = true;  // branch 0
-            return output;
+            throw new IllegalArgumentException("Number of rows and/or cols are not equal");
         } else {
             branchesVisited[9] = true; // branch 9
         }
