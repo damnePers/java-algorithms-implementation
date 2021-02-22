@@ -24,7 +24,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
     protected static final boolean BLACK = false; // non-terminating
     protected static final boolean WHITE = true; // terminating
 
-    public PatriciaTrie() { 
+    public PatriciaTrie() {
         this.creator = new INodeCreator() {
             /**
              * {@inheritDoc}
@@ -55,7 +55,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
     /**
      * Add CharSequence to trie and return the Node which represents the
      * sequence.
-     * 
+     *
      * @param seq
      *            to add to the trie.
      * @return Node which represents the sequence in the trie or NULL if the
@@ -76,25 +76,29 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
             char c = seq.charAt(i);
             if (node.partOfThis(c, indexIntoParent)) {
-                // Node has a char which is equal to char c at that index
+
                 i++;
                 continue;
             } else if (node.string != null && indexIntoParent < node.string.length) {
-                // string is equal to part of this Node's string
+
                 break;
             }
 
             Node child = node.getChildBeginningWithChar(c);
             if (child != null) {
-                // Found a child node starting with char c
+
                 indexIntoParent = 0;
                 node = child;
                 i++;
             } else {
-                // Node doesn't have a child starting with char c
+
                 break;
             }
         }
+        return addSequenceHelp(seq, node, indexIntoParent, indexIntoString);
+    }
+
+    public Node addSequenceHelp(C seq, Node node, int indexIntoParent, int indexIntoString) {
 
         Node addedNode = null;
         Node parent = node.parent;
@@ -103,31 +107,26 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
             char[] refactorString = Arrays.copyOfRange(node.string, indexIntoParent, node.string.length);
 
             if (indexIntoString < seq.length()) {
-                // Creating a new parent by splitting a previous node and adding a new node
 
-                // Create new parent
-                if (parent != null) 
+                if (parent != null)
                     parent.removeChild(node);
 
                 Node newParent = this.creator.createNewNode(parent, parentString, BLACK);
                 if (parent != null)
                     parent.addChild(newParent);
 
-                // Convert the previous node into a child of the new parent
                 Node newNode1 = node;
                 newNode1.parent = newParent;
                 newNode1.string = refactorString;
                 newParent.addChild(newNode1);
 
-                // Create a new node from the rest of the string
                 CharSequence newString = seq.subSequence(indexIntoString, seq.length());
                 Node newNode2 = this.creator.createNewNode(newParent, newString.toString().toCharArray(), WHITE);
                 newParent.addChild(newNode2);
 
-                // New node which was added
                 addedNode = newNode2;
             } else {
-                // Creating a new parent by splitting a previous node and converting the previous node
+
                 if (parent != null)
                     parent.removeChild(node);
 
@@ -135,33 +134,28 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
                 if (parent != null)
                     parent.addChild(newParent);
 
-                // Parent node was created
                 addedNode = newParent;
 
-                // Convert the previous node into a child of the new parent
                 Node newNode1 = node;
                 newNode1.parent = newParent;
                 newNode1.string = refactorString;
                 newParent.addChild(newNode1);
             }
         } else if (node.string != null && seq.length() == indexIntoString) {
-            // Found a node who exactly matches a previous node
 
-            // Already exists as a white node (leaf node)
             if (node.type == WHITE)
                 return null;
 
-            // Was black (branching), now white (leaf)
             node.type = WHITE;
             addedNode = node;
         } else if (node.string != null) {
-            // Adding a child
+
             CharSequence newString = seq.subSequence(indexIntoString, seq.length());
             Node newNode = this.creator.createNewNode(node, newString.toString().toCharArray(), WHITE);
             node.addChild(newNode);
             addedNode = newNode;
         } else {
-            // Add to root node
+
             Node newNode = this.creator.createNewNode(node, seq.toString().toCharArray(), WHITE);
             node.addChild(newNode);
             addedNode = newNode;
@@ -194,7 +188,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
     }
 
     protected void remove(Node node) {
-        if (node == null) 
+        if (node == null)
             return;
 
         // No longer a white node (leaf)
@@ -203,7 +197,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
         Node parent = node.parent;
         if (node.getChildrenSize() == 0) {
             // Remove the node if it has no children
-            if (parent != null) 
+            if (parent != null)
                 parent.removeChild(node);
         } else if (node.getChildrenSize() == 1) {
             // Merge the node with it's child and add to node's parent
@@ -225,7 +219,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
             Node child = parent.getChild(0);
             // Merge with parent
             StringBuilder builder = new StringBuilder();
-            if (parent.string != null) 
+            if (parent.string != null)
                 builder.append(parent.string);
             builder.append(child.string);
             child.string = builder.toString().toCharArray();
@@ -251,7 +245,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
     /**
      * Get node which represents the sequence in the trie.
-     * 
+     *
      * @param seq
      *            to find a node for.
      * @return Node which represents the sequence or NULL if not found.
@@ -289,7 +283,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
             int length = node.string.length;
             CharSequence sub = seq.subSequence(seq.length() - length, seq.length());
             for (int i = 0; i < length; i++) {
-                if (node.string[i] != sub.charAt(i)) 
+                if (node.string[i] != sub.charAt(i))
                     return null;
             }
 
@@ -314,32 +308,32 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
     public boolean validate() {
         java.util.Set<C> keys = new java.util.HashSet<C>();
         Node node = root;
-        if (node!=null && !validate(node,"",keys)) 
+        if (node!=null && !validate(node,"",keys))
             return false;
         return (keys.size()==size());
     }
 
     private boolean validate(Node node, String string, java.util.Set<C> keys) {
         StringBuilder builder = new StringBuilder(string);
-        if (node.string!=null) 
+        if (node.string!=null)
             builder.append(node.string);
         String s = builder.toString();
 
         if (node.type == WHITE) {
             C c = (C)s;
-            if (c==null) 
+            if (c==null)
                 return false;
-            if (keys.contains(c)) 
+            if (keys.contains(c))
                 return false;
             keys.add(c);
         }
         for (int i=0; i<node.childrenSize; i++) {
             Node n = node.getChild(i);
-            if (n==null) 
+            if (n==null)
                 return false;
-            if (n.parent!=node) 
+            if (n.parent!=node)
                 return false;
-            if (!validate(n,s,keys)) 
+            if (!validate(n,s,keys))
                 return false;
         }
         return true;
@@ -407,14 +401,14 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
         protected int childIndex(char character) {
             for (int i = 0; i < childrenSize; i++) {
                 Node c = children[i];
-                if (c.string != null && c.string.length > 0 && c.string[0] == character) 
+                if (c.string != null && c.string.length > 0 && c.string[0] == character)
                     return i;
             }
             return Integer.MIN_VALUE;
         }
 
         protected boolean removeChild(int index) {
-            if (index >= childrenSize) 
+            if (index >= childrenSize)
                 return false;
 
             children[index] = null;
@@ -432,7 +426,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
         }
 
         protected Node getChild(int index) {
-            if (index >= childrenSize) 
+            if (index >= childrenSize)
                 return null;
             return children[index];
         }
@@ -443,7 +437,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
         protected boolean partOfThis(char c, int idx) {
             // Search myself
-            if (string != null && idx < string.length && string[idx] == c) 
+            if (string != null && idx < string.length && string[idx] == c)
                 return true;
             return false;
         }
@@ -466,7 +460,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
         public String toString() {
             StringBuilder builder = new StringBuilder();
             String output = null;
-            if (string != null) 
+            if (string != null)
                 output = String.valueOf(string);
             builder.append("string = ").append((output != null) ? output : "NULL").append("\n");
             builder.append("type = ").append(type).append("\n");
@@ -478,7 +472,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
          */
         @Override
         public int compareTo(Node node) {
-            if (node == null) 
+            if (node == null)
                 return -1;
 
             int length = string.length;
@@ -487,18 +481,18 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
                 Character a = string[i];
                 Character b = node.string[i];
                 int c = a.compareTo(b);
-                if (c != 0) 
+                if (c != 0)
                     return c;
             }
 
-            if (this.type == BLACK && node.type == WHITE) 
+            if (this.type == BLACK && node.type == WHITE)
                 return -1;
-            else if (node.type == BLACK && this.type == WHITE) 
+            else if (node.type == BLACK && this.type == WHITE)
                 return 1;
 
-            if (this.getChildrenSize() < node.getChildrenSize()) 
+            if (this.getChildrenSize() < node.getChildrenSize())
                 return -1;
-            else if (this.getChildrenSize() > node.getChildrenSize()) 
+            else if (this.getChildrenSize() > node.getChildrenSize())
                 return 1;
 
             return 0;
@@ -509,7 +503,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
         /**
          * Create a new node for sequence.
-         * 
+         *
          * @param parent
          *            node of the new node.
          * @param seq
@@ -524,7 +518,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
     protected static class PatriciaTriePrinter {
 
         protected static <C extends CharSequence> String getString(PatriciaTrie<C> tree) {
-            if (tree.root == null) 
+            if (tree.root == null)
                 return "Tree has no nodes.";
             return getString(tree.root, "", null, true);
         }
@@ -532,14 +526,14 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
         protected static String getString(Node node, String prefix, String previousString, boolean isTail) {
             StringBuilder builder = new StringBuilder();
             String thisString = "";
-            if (node.string != null) 
+            if (node.string != null)
                 thisString = String.valueOf(node.string);
             String fullString = ((previousString != null) ? previousString : "") + thisString;
             builder.append(prefix
                     + (isTail ? "└── " : "├── ")
-                    + ((thisString != null) ? 
+                    + ((thisString != null) ?
                                 "[" + ((node.type == WHITE) ? "white" : "black") + "] "
-                                + ((node.type == WHITE) ? "(" + thisString + ") " + fullString : thisString) 
+                                + ((node.type == WHITE) ? "(" + thisString + ") " + fullString : thisString)
                             : "["
                                 + ((node.type == WHITE) ? "white" : "black") + "]") + "\n");
             if (node.children != null) {
@@ -596,7 +590,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * WARNING: This iterator makes a copy of the trie's contents during it's construction!
          */
         @Override
@@ -620,9 +614,9 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
             private void getNodesWhichRepresentsWords(PatriciaTrie.Node node, String string, java.util.Map<PatriciaTrie.Node,String> nodesMap) {
                 StringBuilder builder = new StringBuilder(string);
-                if (node.string!=null) 
+                if (node.string!=null)
                     builder.append(node.string);
-                if (node.type == PatriciaTrie.WHITE) 
+                if (node.type == PatriciaTrie.WHITE)
                     nodesMap.put(node,builder.toString()); //Terminating
                 for (int i=0; i<node.childrenSize; i++) {
                     PatriciaTrie.Node child = node.getChild(i);
@@ -635,7 +629,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
              */
             @Override
             public boolean hasNext() {
-                if (iterator!=null && iterator.hasNext()) 
+                if (iterator!=null && iterator.hasNext())
                     return true;
                 return false;
             }
@@ -645,7 +639,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
              */
             @Override
             public C next() {
-                if (iterator==null) 
+                if (iterator==null)
                     return null;
 
                 java.util.Map.Entry<PatriciaTrie.Node,String> entry = iterator.next();
@@ -658,7 +652,7 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
              */
             @Override
             public void remove() {
-                if (iterator==null || trie==null) 
+                if (iterator==null || trie==null)
                     return;
 
                 iterator.remove();
