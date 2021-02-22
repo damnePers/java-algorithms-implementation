@@ -37,7 +37,8 @@ import org.junit.runners.Suite.SuiteClasses;
                 TreapTests.class,
                 TreeMapTests.class,
                 TrieTests.class,
-                TrieMapTests.class
+                TrieMapTests.class,
+                ZZZMatrixMultBranches.class
                }
              )
 
@@ -46,8 +47,8 @@ public class AllTests {
     /**
      * @param args
      */
-    public static void main(String[] args) {   
-        JUnitCore core = new JUnitCore(); 
-        core.run(AllTests.class); 
+    public static void main(String[] args) {
+        JUnitCore core = new JUnitCore();
+        core.run(AllTests.class);
     }
 }

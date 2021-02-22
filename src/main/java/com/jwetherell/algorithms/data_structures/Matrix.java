@@ -14,7 +14,7 @@ import java.util.Comparator;
  */
 @SuppressWarnings("unchecked")
 public class Matrix<T extends Number> {
-
+    public static boolean[] visited = new boolean[25];//lägg till size
     private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
@@ -234,7 +234,6 @@ public class Matrix<T extends Number> {
     }
 
     public Matrix<T> multiply(Matrix<T> input) {
-        boolean[] visited = new boolean[25];//lägg till size
         Matrix<T> output = new Matrix<T>(this.rows, input.cols);
         if (this.cols != input.rows){
             visited[0] = true;
@@ -334,7 +333,6 @@ public class Matrix<T extends Number> {
             visited[23] = true; //branch 23
         }
         visited[24] = true; //branch 24
-        printVisited(visited);
         return output;//reached when outer for-loop condition isn't met,  branch id #2
     }
     // help-method to count which branches has been visited
