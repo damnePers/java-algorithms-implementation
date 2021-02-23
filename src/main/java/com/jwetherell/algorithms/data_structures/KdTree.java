@@ -27,6 +27,7 @@ import java.util.TreeSet;
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 public class KdTree<T extends KdTree.XYZPoint> implements Iterable<T> {
+    public static boolean[] visited = new boolean[19];
 
     private int k = 3;
     private KdNode root = null;
@@ -383,23 +384,42 @@ public class KdTree<T extends KdTree.XYZPoint> implements Iterable<T> {
     }
 
     private static final <T extends KdTree.XYZPoint> void searchNode(T value, KdNode node, int K, TreeSet<KdNode> results, Set<KdNode> examined) {
+        System.out.println("0");
+        visited[0] = true;
         examined.add(node);
 
         // Search node
         KdNode lastNode = null;
         Double lastDistance = Double.MAX_VALUE;
         if (results.size() > 0) {
+            System.out.println("1");
+            visited[1] = true;
             lastNode = results.last();
             lastDistance = lastNode.id.euclideanDistance(value);
         }
         Double nodeDistance = node.id.euclideanDistance(value);
         if (nodeDistance.compareTo(lastDistance) < 0) {
-            if (results.size() == K && lastNode != null)
+            System.out.println("2");
+            visited[2] = true;
+            if (results.size() == K && lastNode != null){
+                if(results.size() == K){
+                    System.out.println("3");
+                    visited[3] = true;
+                } 
+                if(lastNode != null){
+                    System.out.println("4");
+                    visited[4] = true;
+                } 
                 results.remove(lastNode);
+            }
             results.add(node);
         } else if (nodeDistance.equals(lastDistance)) {
+            System.out.println("5");
+            visited[5] = true;
             results.add(node);
         } else if (results.size() < K) {
+            System.out.println("6");
+            visited[6] = true;
             results.add(node);
         }
         lastNode = results.last();
@@ -412,46 +432,80 @@ public class KdTree<T extends KdTree.XYZPoint> implements Iterable<T> {
         // Search children branches, if axis aligned distance is less than
         // current distance
         if (lesser != null && !examined.contains(lesser)) {
+            if(lesser != null){
+                System.out.println("7");
+                visited[7] = true;
+            }
+            if(!examined.contains(lesser)){
+                System.out.println("8");
+                visited[8] = true;
+            }
             examined.add(lesser);
 
             double nodePoint = Double.MIN_VALUE;
             double valuePlusDistance = Double.MIN_VALUE;
             if (axis == X_AXIS) {
+                System.out.println("9");
+                visited[9] = true;
                 nodePoint = node.id.x;
                 valuePlusDistance = value.x - lastDistance;
             } else if (axis == Y_AXIS) {
+                System.out.println("10");
+                visited[10] = true;
                 nodePoint = node.id.y;
                 valuePlusDistance = value.y - lastDistance;
             } else {
+                System.out.println("11");
+                visited[11] = true;
                 nodePoint = node.id.z;
                 valuePlusDistance = value.z - lastDistance;
             }
             boolean lineIntersectsCube = ((valuePlusDistance <= nodePoint) ? true : false);
 
             // Continue down lesser branch
-            if (lineIntersectsCube)
+            if (lineIntersectsCube){
+                System.out.println("12");
+                visited[12] = true;
                 searchNode(value, lesser, K, results, examined);
+            }
         }
         if (greater != null && !examined.contains(greater)) {
+            if(greater != null) {
+                System.out.println("13");
+                visited[13] = true;
+            }
+            if(!examined.contains(greater)) {
+                System.out.println("14");
+                visited[14] = true;
+            }
             examined.add(greater);
 
             double nodePoint = Double.MIN_VALUE;
             double valuePlusDistance = Double.MIN_VALUE;
             if (axis == X_AXIS) {
+                System.out.println("15");
+                visited[15] = true;
                 nodePoint = node.id.x;
                 valuePlusDistance = value.x + lastDistance;
             } else if (axis == Y_AXIS) {
+                System.out.println("16");
+                visited[16] = true;
                 nodePoint = node.id.y;
                 valuePlusDistance = value.y + lastDistance;
             } else {
+                System.out.println("17");
+                visited[17] = true;
                 nodePoint = node.id.z;
                 valuePlusDistance = value.z + lastDistance;
             }
             boolean lineIntersectsCube = ((valuePlusDistance >= nodePoint) ? true : false);
 
             // Continue down greater branch
-            if (lineIntersectsCube)
+            if (lineIntersectsCube){
+                System.out.println("18");
+                visited[18] = true;
                 searchNode(value, greater, K, results, examined);
+            }
         }
     }
 

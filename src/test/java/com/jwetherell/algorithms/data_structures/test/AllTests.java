@@ -37,7 +37,8 @@ import org.junit.runners.Suite.SuiteClasses;
                 TreapTests.class,
                 TreeMapTests.class,
                 TrieTests.class,
-                TrieMapTests.class
+                TrieMapTests.class,
+                ZZZ.class
                }
              )
 
