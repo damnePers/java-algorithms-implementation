@@ -200,48 +200,63 @@ public class Matrix<T extends Number> {
         if ((this.cols != input.cols) || (this.rows != input.rows)) {
             System.out.println(" 1");
             return output;
+        } else {
+            System.out.printf(" 2");
         }
 
-        for (int r = 0; r < output.rows; r++) {
-            System.out.printf(" 2");
-            for (int c = 0; c < output.cols; c++) {
-                System.out.printf(" 3");
-                for (int i = 0; i < cols; i++) {
-                    System.out.printf(" 4");
+        int r = 0;
+        for (r = 0; r < output.rows; r++) {
+            System.out.printf(" 3");
+            int c = 0;
+            for (c = 0; c < output.cols; c++) {
+                System.out.printf(" 4");
+                int i = 0;
+                for (i = 0; i < cols; i++) {
+                    System.out.printf(" 5");
                     T m1 = this.get(r, c);
                     T m2 = input.get(r, c);
                     T result;
                     /* TODO: This is ugly and how to handle number overflow? */
                     if (m1 instanceof BigDecimal || m2 instanceof BigDecimal) {
-                        System.out.printf(" 5");
+                        System.out.printf(" 6");
                         BigDecimal result2 = ((BigDecimal)m1).subtract((BigDecimal)m2);
                         result = (T)result2;
                     } else if (m1 instanceof BigInteger || m2 instanceof BigInteger) {
-                        System.out.printf(" 6");
+                        System.out.printf(" 7");
                         BigInteger result2 = ((BigInteger)m1).subtract((BigInteger)m2);
                         result = (T)result2;
                     } else if (m1 instanceof Long || m2 instanceof Long) {
-                        System.out.printf(" 7");
+                        System.out.printf(" 8");
                         Long result2 = (m1.longValue() - m2.longValue());
                         result = (T)result2;
                     } else if (m1 instanceof Double || m2 instanceof Double) {
-                        System.out.printf(" 8");
+                        System.out.printf(" 9");
                         Double result2 = (m1.doubleValue() - m2.doubleValue());
                         result = (T)result2;
                     } else if (m1 instanceof Float || m2 instanceof Float) {
-                        System.out.printf(" 9");
+                        System.out.printf(" 10");
                         Float result2 = (m1.floatValue() - m2.floatValue());
                         result = (T)result2;
                     } else {
-                        System.out.printf(" 10");
+                        System.out.printf(" 11");
                         // Integer
                         Integer result2 = (m1.intValue() - m2.intValue());
                         result = (T)result2;
                     }
                     output.set(r, c, result);
                 }
+                if (i >= cols) {
+                    System.out.printf(" 12");
+                }
+            }
+            if (c >= output.cols) {
+                System.out.printf(" 13");
             }
         }
+        if (r >= output.rows) {
+            System.out.printf(" 14");
+        }
+
         System.out.println("");
         return output;
     }
