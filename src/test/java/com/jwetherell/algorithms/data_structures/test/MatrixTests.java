@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import com.jwetherell.algorithms.data_structures.Matrix;
 
@@ -110,5 +112,91 @@ public class MatrixTests {
         
         assertArrayEquals(expectedResult.getRow(0), matrix.getRow(0));
         assertArrayEquals(expectedResult.getRow(1), matrix.getRow(1));
+    }
+
+    @Test
+    public void testCompareMethodBigDecimal() {
+        Matrix<BigDecimal> m1 = new Matrix<BigDecimal>(2, 2);
+        m1.set(0, 0, new BigDecimal(1));
+        m1.set(0, 1, new BigDecimal(0));
+        m1.set(1, 0, new BigDecimal(0));
+        m1.set(1, 1, new BigDecimal(1));
+        
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodBigInteger() {
+        Matrix<BigInteger> m1 = new Matrix<BigInteger>(2, 2);
+        m1.set(0, 0, BigInteger.valueOf(1));
+        m1.set(0, 1, BigInteger.valueOf(0));
+        m1.set(1, 0, BigInteger.valueOf(0));
+        m1.set(1, 1, BigInteger.valueOf(1));
+        
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodLong() {
+        Matrix<Long> m1 = new Matrix<Long>(2, 2);
+        m1.set(0, 0, 1L);
+        m1.set(0, 1, 0L);
+        m1.set(1, 0, 0L);
+        m1.set(1, 1, 1L);
+        
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodDouble() {
+        Matrix<Double> m1 = new Matrix<Double>(2, 2);
+        m1.set(0, 0, 1.0);
+        m1.set(0, 1, 0.0);
+        m1.set(1, 0, 0.0);
+        m1.set(1, 1, 1.0);
+        
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodFloat() {
+        Matrix<Float> m1 = new Matrix<Float>(2, 2);
+        m1.set(0, 0, 1f);
+        m1.set(0, 1, 0f);
+        m1.set(1, 0, 0f);
+        m1.set(1, 1, 1f);
+        
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
     }
 }

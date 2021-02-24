@@ -31,14 +31,14 @@ public class Matrix<T extends Number> {
             if (o1 instanceof BigDecimal || o2 instanceof BigDecimal) {
                 if(o1 instanceof BigDecimal) visited[1] = true;
                 if(o2 instanceof BigDecimal) visited[2] = true;
-                BigDecimal c1 = (BigDecimal)o1;
-                BigDecimal c2 = (BigDecimal)o2;
+                BigDecimal c1 = BigDecimal.valueOf(o1.intValue());
+                BigDecimal c2 = BigDecimal.valueOf(o2.intValue());
                 result = c1.compareTo(c2);
             } else if (o1 instanceof BigInteger || o2 instanceof BigInteger) {
                 if(o1 instanceof BigInteger) visited[3] = true;
                 if(o2 instanceof BigInteger) visited[4] = true;
-                BigInteger c1 = (BigInteger)o1;
-                BigInteger c2 = (BigInteger)o2;
+                BigInteger c1 = BigInteger.valueOf(o1.intValue());
+                BigInteger c2 = BigInteger.valueOf(o2.intValue());
                 result = c1.compareTo(c2);
             } else if (o1 instanceof Long || o2 instanceof Long) {
                 if(o1 instanceof Long) visited[5] = true;
