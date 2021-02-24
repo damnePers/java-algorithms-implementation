@@ -57,43 +57,7 @@ public class MatrixTests {
         Matrix<Integer> result2 = new Matrix<Integer>(2,2,array2);
 
         Matrix<Integer> matrix5 = matrix4.subtract(matrix4);
-        // TASK 2:
-        // "1. Identify the requirements that are tested or untested by the given test suite"
-        // Answer: This test currently only checks that the result of subtracting a matrix from itself is a
-        // matrix of zeros, with the same dimensions:
         assertTrue("Matrix subtraction error. matrix5="+matrix5+" result2"+result2, matrix5.equals(result2));
-
-        // TASK 2: Create new test cases...
-
-        // Test to reach branch 1.
-        // Requirement: If the input matrix has a different dimensionality to "this" Matrix,
-        // then return a matrix of null values, with the same dimensionality of "this" Matrix:
-        Integer[][] arrayDifferentSize = new Integer[][]{{1},
-                                                         {1}};
-        Matrix<Integer> matrixDifferentSize = new Matrix<Integer>(2,1,arrayDifferentSize);
-        Matrix<Integer> matrixDifferentSizeSubtraction = matrixDifferentSize.subtract(matrix4);
-        System.out.println(matrixDifferentSizeSubtraction);
-        System.out.println(matrixDifferentSize);
-        // Check the top-left element is null:
-        assertTrue(matrixDifferentSizeSubtraction.get(0,0) == null);
-        // Check the number of rows and columns is the same as "this" matrix:
-        assertTrue(matrixDifferentSizeSubtraction.getRows() == matrixDifferentSize.getRows());
-        assertTrue(matrixDifferentSizeSubtraction.getCols() == matrixDifferentSize.getCols());
-
-        // Test to reach branch 8.
-        // Requirement: If a 2x2 Matrix consisting of the values 1.2 is subtracted from a 2x2 Matrix
-        // with the value 3.9, then, the result will be a 2x2 Matrix with the value 2.7:
-        Double[][] array1point2 = new Double[][]{{1.2,1.2},
-                                                 {1.2,1.2}};
-        Matrix<Double> matrix1point2 = new Matrix<Double>(2,2,array1point2);
-        Double[][] array3point9 = new Double[][]{{3.9,3.9},
-                                                 {3.9,3.9}};
-        Matrix<Double> matrix3point9 = new Matrix<Double>(2,2,array3point9);
-        Double[][] array2point7 = new Double[][]{{2.7,2.7},
-                                                 {2.7,2.7}};
-        Matrix<Double> matrix2point7 = new Matrix<Double>(2,2,array2point7);
-        Matrix<Double> resultDoubleSubtraction = matrix3point9.subtract(matrix1point2);
-        assertTrue(resultDoubleSubtraction.equals(matrix2point7));
 
         // Result of addition
         Integer[][] array3 = new Integer[][]{{0,2},
