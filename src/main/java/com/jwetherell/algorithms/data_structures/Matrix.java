@@ -15,10 +15,11 @@ import java.util.Comparator;
  */
 @SuppressWarnings("unchecked")
 public class Matrix<T extends Number> {
-
     // Start measuring branch coverage
+    public static boolean[] visited = new boolean[25];
     public static boolean[] branchesVisited = new boolean[14];
     // End measuring branch coverage
+  
     private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
@@ -260,80 +261,116 @@ public class Matrix<T extends Number> {
 
     public Matrix<T> multiply(Matrix<T> input) {
         Matrix<T> output = new Matrix<T>(this.rows, input.cols);
-        if (this.cols != input.rows)
-            return output;
+        if (this.cols != input.rows){
+            visited[0] = true;
+            return output; //branch 0
+        }else{visited[1] = true;} //branch 1
 
         for (int r = 0; r < output.rows; r++) {
+          visited[2] = true; //branch 2
             for (int c = 0; c < output.cols; c++) {
+                visited[3] = true; //branch 3
                 T[] row = getRow(r);
                 T[] column = input.getColumn(c);
                 T test = row[0];
                 /* TODO: This is ugly and how to handle number overflow? */
                 if (test instanceof BigDecimal) {
+                    visited[4] = true; //branch 4
                     BigDecimal result = BigDecimal.ZERO;
                     for (int i = 0; i < cols; i++) {
+                      visited[5] = true; //branch 5
                         T m1 = row[i];
                         T m2 = column[i];
 
                         BigDecimal result2 = ((BigDecimal)m1).multiply(((BigDecimal)m2));
                         result = result.add(result2);
                     }
+                    visited[6] = true; //branch 6
                     output.set(r, c, (T)result);
                 } else if (test instanceof BigInteger) {
+                    visited[7] = true; //branch 7
                     BigInteger result = BigInteger.ZERO;
                     for (int i = 0; i < cols; i++) {
+                        visited[8] = true; //branch 8
                         T m1 = row[i];
                         T m2 = column[i];
 
                         BigInteger result2 = ((BigInteger)m1).multiply(((BigInteger)m2));
                         result = result.add(result2);
                     }
+                    visited[9] = true; //branch 9
                     output.set(r, c, (T)result);
                 } else if (test instanceof Long) {
+                    visited[10] = true; //branch 10
                     Long result = 0l;
                     for (int i = 0; i < cols; i++) {
+                        visited[11] = true; //branch 11
                         T m1 = row[i];
                         T m2 = column[i];
 
                         Long result2 = m1.longValue() * m2.longValue();
                         result = result+result2;
                     }
+                    visited[12] = true; //branch 12
                     output.set(r, c, (T)result);
                 } else if (test instanceof Double) {
+                    visited[13] = true; //branch 13
                     Double result = 0d;
                     for (int i = 0; i < cols; i++) {
+                      visited[14] = true; //branch 14
                         T m1 = row[i];
                         T m2 = column[i];
 
                         Double result2 = m1.doubleValue() * m2.doubleValue();
                         result = result+result2;
                     }
+                    visited[15] = true; //branch 15
                     output.set(r, c, (T)result);
                 } else if (test instanceof Float) {
+                    visited[16] = true; //branch 16
                     Float result = 0f;
                     for (int i = 0; i < cols; i++) {
+                        visited[17] = true; //branch 17
                         T m1 = row[i];
                         T m2 = column[i];
 
                         Float result2 = m1.floatValue() * m2.floatValue();
                         result = result+result2;
                     }
+                    visited[18] = true; //branch 18
                     output.set(r, c, (T)result);
                 } else {
+                    visited[19] = true; //branch 19
                     // Integer
                     Integer result = 0;
                     for (int i = 0; i < cols; i++) {
+                      visited[20] = true; //branch 20
                         T m1 = row[i];
                         T m2 = column[i];
 
                         Integer result2 = m1.intValue() * m2.intValue();
                         result = result+result2;
                     }
+                    visited[21] = true; //branch 21
                     output.set(r, c, (T)result);
                 }
+                visited[22] = true; //branch 22
             }
+            visited[23] = true; //branch 23
         }
-        return output;
+        visited[24] = true; //branch 24
+        return output;//reached when outer for-loop condition isn't met,  branch id #2
+    }
+    // help-method to count which branches has been visited
+    public void printVisited(boolean[] visited){
+      int numVisited = 0;
+      for (boolean b : visited) {
+          if (b) numVisited++;
+      }
+      double percentage = (double) numVisited/visited.length;
+      System.out.println("Visited: \t\t"+numVisited);
+      System.out.println("Total: \t\t\t"+visited.length);
+      System.out.println("Percentage: \t"+percentage);
     }
 
     public void copy(Matrix<T> m) {
