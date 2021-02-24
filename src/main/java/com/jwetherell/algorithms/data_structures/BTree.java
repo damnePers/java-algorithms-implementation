@@ -21,7 +21,7 @@ import com.jwetherell.algorithms.data_structures.interfaces.ITree;
  */
 @SuppressWarnings("unchecked")
 public class BTree<T extends Comparable<T>> implements ITree<T> {
-    public static boolean[] visited = new boolean[21];
+    public static boolean[] visited = new boolean[22];
 
     // Default to 2-3 Tree
     private int minKeySize = 1;
@@ -493,7 +493,7 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
                 T p = node.getKey(i - 1);
                 T n = node.getKey(i);
                 if (p.compareTo(n) > 0){
-                    visited[3] = true;
+                    visited[3] = true; //FIX
                     return false;
                 }
             }
@@ -503,7 +503,7 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
             visited[4] = true;
             // root
             if (keySize > maxKeySize) {
-                visited[5] = true;
+                visited[5] = true; //FIX
                 // check max key size. root does not have a min key size
                 return false;
             } else if (childrenSize == 0) {
@@ -511,35 +511,35 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
                 // if root, no children, and keys are valid
                 return true;
             } else if (childrenSize < 2) {
-                visited[7] = true;
+                visited[7] = true; //FIX
                 // root should have zero or at least two children
                 return false;
             } else if (childrenSize > maxChildrenSize) {
-                visited[8] = true;
+                visited[8] = true; //FIX
                 return false;
             }
         } else {
             visited[9] = true;
             // non-root
             if (keySize < minKeySize) {
-                visited[10] = true;
+                visited[10] = true; //FIX
                 return false;
             } else if (keySize > maxKeySize) {
-                visited[11] = true;
+                visited[11] = true; //FIX
                 return false;
             } else if (childrenSize == 0) {
                 visited[12] = true;
                 return true;
             } else if (keySize != (childrenSize - 1)) {
-                visited[13] = true;
+                visited[13] = true; //FIX
                 // If there are chilren, there should be one more child then
                 // keys
                 return false;
             } else if (childrenSize < minChildrenSize) {
-                visited[14] = true;
+                visited[14] = true; //FIX
                 return false;
             } else if (childrenSize > maxChildrenSize) {
-                visited[15] = true;
+                visited[15] = true; //FIX
                 return false;
             }
         }
@@ -547,14 +547,14 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
         Node<T> first = node.getChild(0);
         // The first child's last key should be less than the node's first key
         if (first.getKey(first.numberOfKeys() - 1).compareTo(node.getKey(0)) > 0){
-            visited[16] = true;
+            visited[16] = true; //FIX
             return false;
         }
 
         Node<T> last = node.getChild(node.numberOfChildren() - 1);
         // The last child's first key should be greater than the node's last key
         if (last.getKey(0).compareTo(node.getKey(node.numberOfKeys() - 1)) < 0){
-            visited[17] = true;
+            visited[17] = true; //FIX
             return false;
         }
 
@@ -569,7 +569,7 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
                 return false;
             }
             if (n.compareTo(c.getKey(c.numberOfKeys() - 1)) < 0){
-                visited[19] = true;
+                visited[19] = true; //FIX
                 return false;
             }
         }
@@ -579,7 +579,7 @@ public class BTree<T extends Comparable<T>> implements ITree<T> {
             Node<T> c = node.getChild(i);
             boolean valid = this.validateNode(c);
             if (!valid){
-                visited[21] = true;
+                visited[21] = true; //FIX
                 return false;
             }
         }

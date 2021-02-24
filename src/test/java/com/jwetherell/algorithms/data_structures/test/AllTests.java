@@ -38,7 +38,8 @@ import org.junit.runners.Suite.SuiteClasses;
                 TreeMapTests.class,
                 TrieTests.class,
                 TrieMapTests.class,
-                ZZZ.class
+                ZZZ.class,
+                ZZZMatrixTests.class
                }
              )
 

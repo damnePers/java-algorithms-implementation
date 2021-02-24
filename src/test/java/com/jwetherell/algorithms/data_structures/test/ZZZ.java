@@ -19,5 +19,8 @@ public class ZZZ {
         System.out.println("Visited: \t\t"+numVisited);
         System.out.println("Total: \t\t\t"+BTree.visited.length);
         System.out.println("Percentage: \t"+percentage*100+"%");
+
+        System.out.println(Arrays.toString(BTree.visited));
+
       }
 }
