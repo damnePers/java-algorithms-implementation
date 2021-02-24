@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    
+    
+    <link rel="SHORTCUT ICON" href="img/clover.ico" />
+
+    <link rel="stylesheet" href="aui/css/aui.min.css" media="all"/>
+    <link rel="stylesheet" href="aui/css/aui-experimental.min.css" media="all"/>
+    <!--[if IE 9]><link rel="stylesheet" href="aui/css/aui-ie9.min.css" media="all"/><![endif]-->
+
+    <style type="text/css" media="all">
+        @import url('style.css');
+        @import url('tree.css');
+        
+    </style>
+
+    <script src="jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="aui/js/aui.min.js" type="text/javascript"></script>
+    <script src="aui/js/aui-experimental.min.js" type="text/javascript"></script>
+    <script src="aui/js/aui-soy.min.js" type="text/javascript"></script>
+
+    <script src="package-nodes-tree.js" type="text/javascript"></script>
+    <script src="clover-tree.js" type="text/javascript"></script>
+    <script src="clover.js" type="text/javascript"></script>
+    <script src="clover-descriptions.js" type="text/javascript"></script>
+    <script src="cloud.js" type="text/javascript"></script>
+
+            <title>algorithms 1.0</title>
+    </head>
+
+<body onresize="processTreeMapDashJson(treeMapJson);" >
+    <div id="page">
+        
+        
+
+
+<header id="header" role="banner">
+    <nav class="aui-header aui-dropdown2-trigger-group" role="navigation">
+        <div class="aui-header-inner">
+            <div class="aui-header-primary">
+                <h1 id="logo" class="aui-header-logo aui-header-logo-clover">
+                    <a href="http://openclover.org" title="Visit OpenClover home page"><span class="aui-header-logo-device">OpenClover</span></a>
+                </h1>
+                            </div>
+            <div class="aui-header-secondary">
+                <ul class="aui-nav">
+                    <li id="system-help-menu">
+                        <a class="aui-nav-link" title="Open online documentation" target="_blank"
+                           href="http://openclover.org/documentation">
+                            <span class="aui-icon aui-icon-small aui-iconfont-help">&#160;Help</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+        
+        <div class="aui-page-panel">
+            <div class="aui-page-panel-inner">
+                <div class="aui-page-panel-nav aui-page-panel-nav-clover">
+                    
+
+<div class="aui-page-header-inner" style="margin-bottom: 20px;">
+    <div class="aui-page-header-image">
+                <div class="aui-avatar aui-avatar-large aui-avatar-project">
+            <div class="aui-avatar-inner">
+                                    <img src="img/clover_logo_large.png" alt="Clover icon"/>
+                            </div>
+        </div>
+            </div>
+    <div class="aui-page-header-main" >
+        <h1>
+                                        algorithms 1.0
+                                </h1>
+    </div>
+</div>
+
+<nav class="aui-navgroup aui-navgroup-vertical">
+    <div class="aui-navgroup-inner">
+                                            <ul class="aui-nav">
+                <li class="aui-nav-selected">
+                    <a href="dashboard.html">Project overview</a>
+                </li>
+            </ul>
+        
+                <div class="aui-nav-heading packages-nav-heading">
+            <strong>Packages</strong>
+        </div>
+        <div class="aui-nav project-packages">
+            <form method="get" action="#" class="aui package-filter-container">
+                <input type="text" autocomplete="off" class="package-filter text"
+                       placeholder="Type to filter packages..." name="package-filter" id="package-filter"
+                       title="Start typing package name (or part of the name) to search through the tree. Use arrow keys and the Enter key to navigate."/>
+            </form>
+            <p class="package-filter-no-results-message hidden">
+                <small>No results found.</small>
+            </p>
+                                                  <div class="packages-tree-wrapper" data-root-relative="" data-package-name="">
+                <div class="packages-tree-container"></div>
+                <div class="clover-packages-lozenges"></div>
+            </div>
+        </div>
+        
+            </div>
+</nav>                </div>
+                <section class="aui-page-panel-content">
+                    <div class="aui-page-panel-content-clover">
+
+                    
+                    <ol class="aui-nav aui-nav-breadcrumbs">
+            
+        <li><a href="dashboard.html">Project Clover database ons feb. 24 2021 13:15:10 CET</a></li>
+    </ol>
+    
+<h1 class="aui-h2-clover">
+            Project overview
+    </h1>
+<div class="aui-tabs horizontal-tabs">
+        <ul class="tabs-menu">
+            <li class="menu-item active-tab">
+            <a href="dashboard.html">Dashboard</a>
+        </li>
+                <li class="menu-item ">
+            <a href="pkg-summary.html"><strong>Application code</strong></a>
+        </li>
+                <li class="menu-item ">
+            <a href="testsrc-pkg-summary.html"><strong>Test code</strong></a>
+        </li>
+        <li class="menu-item ">
+            <a href="test-pkg-summary.html"><strong>Test results</strong></a>
+        </li>
+                <li class="menu-item ">
+            <a href="top-risks.html"><strong>Top risks</strong></a>
+        </li>
+        <li class="menu-item ">
+            <a href="quick-wins.html"><strong>Quick wins</strong></a>
+        </li>
+                                                <li class="menu-item ">
+                <a href="treemap.html"><strong>Coverage tree map</strong></a>
+            </li>
+            </ul>
+    <div class="tabs-pane active-pane" id="tabs-first">
+
+        <div>&#160;</div>
+
+
+
+
+
+
+<div class="aui-group">
+    <div class="aui-item">
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                
+                <h3>
+                    Code coverage
+                    <small style="float:right; font-weight: normal">
+                        262 classes,
+                        10 016 /
+                        15 830 elements
+                    </small>
+                </h3>
+            </header>
+            <div class="dashboard-widget-content">
+                <div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.6327227</span>63,3%</div><div style="display: table-cell">
+ <div title="63,3% Covered"  style="min-width:200px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:63.3%"></div></div></div></div>
+                <p><a href="pkg-summary.html">See more</a></p>
+            </div>
+        </div>
+
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>
+                    Test results
+                    <small style="float:right; font-weight: normal">
+                        217 /
+                        217 tests
+                        151,77 secs
+                    </small>
+                </h3>
+            </header>
+            <div class="dashboard-widget-content">
+                                    
+
+<div style="display: table; width: 100%">
+            <div class="barGraphValue"><span class="sortValue">1.0</span>100%</div>         <div style="display: table-cell">
+            
+            <div title="0% Errors" style="min-width: 40px;" class="testBarError">
+                <div title="100% of tests passed&lt;br/&gt;0% of tests failed" class="testBarFail" style="width: 100%"><div class="testBarPass" style="width: 100%"></div></div>
+            </div>
+        </div>
+    </div>                                <p><a href="test-pkg-summary.html">See more</a></p>
+            </div>
+        </div>
+
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Code metrics</h3>
+            </header>
+                         
+
+<div id="$statsId" class="aui-item" style="display: ${display}">
+<div style="display: table">
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of branches in this project">Branches:</label></div>
+        <div class="stats-box-value">4 876</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of statements in this project">Statements:</label></div>
+        <div class="stats-box-value">9 423</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of methods in this project">Methods:</label></div>
+        <div class="stats-box-value">1 531</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of classes in this project">Classes:</label></div>
+        <div class="stats-box-value">262</div>
+    </div>
+            <div class="stats-box">
+            <div class="stats-box-label"><label title="Total number of files in this project">Files:</label></div>
+            <div class="stats-box-value">102</div>
+        </div>
+                <div class="stats-box">
+            <div class="stats-box-label"><label title="Total number of packages in this project">Packages:</label></div>
+            <div class="stats-box-value">9</div>
+        </div>
+        <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of lines of code in this project">LOC:</label></div>
+        <div class="stats-box-value">25 124</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Total number of non-comment lines of code in this project">NCLOC:</label></div>
+        <div class="stats-box-value">15 811</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Cyclomatic complexity is the number of paths in this project">Total complexity:</label></div>
+        <div class="stats-box-value">4 537</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label">
+            <label title="Complexity density is the complexity divided by the number of statements in this project">Complexity density:</label>
+        </div>
+        <div class="stats-box-value">0,48</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Number of statements per method.">Statements/Method:</label></div>
+        <div class="stats-box-value">6,15</div>
+    </div>
+    <div class="stats-box">
+        <div class="stats-box-label"><label title="Number of methods per class.">Methods/Class:</label></div>
+        <div class="stats-box-value">5,84</div>
+    </div>
+            <div class="stats-box">
+            <div class="stats-box-label"><label title="Number of classes per package.">Classes/Package:</label></div>
+            <div class="stats-box-value">29,11</div>
+        </div>
+        <div class="stats-box">
+        <div class="stats-box-label"><label title="Complexity divided by the number of methods in this project">Average method complexity:</label></div>
+        <div class="stats-box-value">2,96</div>
+    </div>
+</div>
+
+</div>        </div>
+
+                <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Class Coverage Distribution</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                <div style="text-align: center">                     <img src="img/classDistrubutionChart.png" alt="img/classDistrubutionChart.png" usemap="#classDistrubutionChart.png"/>
+                </div>
+                <map id="classDistrubutionChart.png" name="classDistrubutionChart.png">
+<area shape="rect" coords="288,54,310,206" title="47 classes have 91-100% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="263,80,285,206" title="39 classes have 81-90% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="238,106,260,206" title="31 classes have 71-80% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="213,122,235,206" title="26 classes have 61-70% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="188,168,210,206" title="12 classes have 51-60% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="163,197,185,206" title="3 classes have 41-50% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="138,197,160,206" title="3 classes have 31-40% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="113,177,135,206" title="9 classes have 21-30% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="88,197,110,206" title="3 classes have 11-20% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="63,200,85,206" title="2 classes have 1-10% coverage" alt="" nohref="nohref"/>
+<area shape="rect" coords="38,15,60,206" title="59 classes have 0% coverage" alt="" nohref="nohref"/>
+</map>
+            </div>
+        </div>
+        
+                <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Class Complexity</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                <div style="text-align: center">
+                    <img src="img/classComplexityChart.png" alt="img/classComplexityChart.png" usemap="#classComplexityChart.png"/>
+                </div>
+                <map id="classComplexityChart.png" name="classComplexityChart.png">
+<area shape="poly" coords="54,197,51,199,49,197,51,194,54,197,54,197" title="Complexity: 9; Coverage: 0%; Class: Longs" alt="" href="com/jwetherell/algorithms/numbers/Longs.html#Longs"/>
+<area shape="poly" coords="54,142,51,145,49,142,51,140,54,142,54,142" title="Complexity: 49; Coverage: 0%; Class: Integers" alt="" href="com/jwetherell/algorithms/numbers/Integers.html#Integers"/>
+<area shape="poly" coords="279,198,276,201,274,198,276,196,279,198,279,198" title="Complexity: 8; Coverage: 92%; Class: Complex" alt="" href="com/jwetherell/algorithms/numbers/Complex.html#Complex"/>
+<area shape="poly" coords="54,198,51,201,49,198,51,196,54,198,54,198" title="Complexity: 8; Coverage: 0%; Class: SubsequenceCounter" alt="" href="com/jwetherell/algorithms/sequence/SubsequenceCounter.html#SubsequenceCounter"/>
+<area shape="poly" coords="54,194,51,196,49,194,51,191,54,194,54,194" title="Complexity: 11; Coverage: 0%; Class: LongestPalindromicSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestPalindromicSubsequence.html#LongestPalindromicSubsequence"/>
+<area shape="poly" coords="54,199,51,202,49,199,51,197,54,199,54,199" title="Complexity: 7; Coverage: 0%; Class: LongestIncreasingSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestIncreasingSubsequence.html#LongestIncreasingSubsequence"/>
+<area shape="poly" coords="54,186,51,188,49,186,51,183,54,186,54,186" title="Complexity: 17; Coverage: 0%; Class: LongestCommonSubsequence.MatrixPair" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence.MatrixPair"/>
+<area shape="poly" coords="54,184,51,187,49,184,51,182,54,184,54,184" title="Complexity: 18; Coverage: 0%; Class: LongestCommonSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence"/>
+<area shape="poly" coords="54,204,51,206,49,204,51,201,54,204,54,204" title="Complexity: 4; Coverage: 0%; Class: LargestSumContiguousSubarray" alt="" href="com/jwetherell/algorithms/sequence/LargestSumContiguousSubarray.html#LargestSumContiguousSubarray"/>
+<area shape="poly" coords="54,180,51,183,49,180,51,178,54,180,54,180" title="Complexity: 21; Coverage: 0%; Class: FibonacciSequence" alt="" href="com/jwetherell/algorithms/sequence/FibonacciSequence.html#FibonacciSequence"/>
+<area shape="poly" coords="54,205,51,207,49,205,51,202,54,205,54,205" title="Complexity: 3; Coverage: 0%; Class: ArithmeticProgression" alt="" href="com/jwetherell/algorithms/sequence/ArithmeticProgression.html#ArithmeticProgression"/>
+<area shape="poly" coords="54,204,51,206,49,204,51,201,54,204,54,204" title="Complexity: 4; Coverage: 0%; Class: LargestSumContiguousSubarray" alt="" href="com/jwetherell/algorithms/sequence/LargestSumContiguousSubarray.html#LargestSumContiguousSubarray"/>
+<area shape="poly" coords="54,198,51,201,49,198,51,196,54,198,54,198" title="Complexity: 8; Coverage: 0%; Class: SubsequenceCounter" alt="" href="com/jwetherell/algorithms/sequence/SubsequenceCounter.html#SubsequenceCounter"/>
+<area shape="poly" coords="54,204,51,206,49,204,51,201,54,204,54,204" title="Complexity: 4; Coverage: 0%; Class: LargestSumContiguousSubarray" alt="" href="com/jwetherell/algorithms/sequence/LargestSumContiguousSubarray.html#LargestSumContiguousSubarray"/>
+<area shape="poly" coords="54,205,51,207,49,205,51,202,54,205,54,205" title="Complexity: 3; Coverage: 0%; Class: ArithmeticProgression" alt="" href="com/jwetherell/algorithms/sequence/ArithmeticProgression.html#ArithmeticProgression"/>
+<area shape="poly" coords="54,198,51,201,49,198,51,196,54,198,54,198" title="Complexity: 8; Coverage: 0%; Class: SubsequenceCounter" alt="" href="com/jwetherell/algorithms/sequence/SubsequenceCounter.html#SubsequenceCounter"/>
+<area shape="poly" coords="54,191,51,194,49,191,51,189,54,191,54,191" title="Complexity: 13; Coverage: 0%; Class: BinarySearch" alt="" href="com/jwetherell/algorithms/search/BinarySearch.html#BinarySearch"/>
+<area shape="poly" coords="276,188,274,191,271,188,274,186,276,188,276,188" title="Complexity: 15; Coverage: 91%; Class: TrieMap.JavaCompatibleTrieMap" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleTrieMap"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="54,193,51,195,49,193,51,190,54,193,54,193" title="Complexity: 12; Coverage: 0%; Class: TrieMap.TrieMapPrinter" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.TrieMapPrinter"/>
+<area shape="poly" coords="80,202,78,205,75,202,78,200,80,202,80,202" title="Complexity: 5; Coverage: 11%; Class: TrieMap.TrieMapNode" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.TrieMapNode"/>
+<area shape="poly" coords="225,169,222,172,220,169,222,167,225,169,225,169" title="Complexity: 29; Coverage: 70%; Class: TrieMap" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap"/>
+<area shape="poly" coords="242,190,240,192,237,190,240,187,242,190,242,190" title="Complexity: 14; Coverage: 77%; Class: Trie.JavaCompatibleTrie.TrieIterator" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie.TrieIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="54,191,51,194,49,191,51,189,54,191,54,191" title="Complexity: 13; Coverage: 0%; Class: BinarySearch" alt="" href="com/jwetherell/algorithms/search/BinarySearch.html#BinarySearch"/>
+<area shape="poly" coords="218,187,215,190,213,187,215,185,218,187,218,187" title="Complexity: 16; Coverage: 67%; Class: Trie.Node" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.Node"/>
+<area shape="poly" coords="259,152,257,154,254,152,257,149,259,152,259,152" title="Complexity: 42; Coverage: 84%; Class: Trie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie"/>
+<area shape="poly" coords="272,190,269,192,267,190,269,187,272,190,272,190" title="Complexity: 14; Coverage: 89%; Class: TreeMap.JavaCompatibleTreeMap" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.JavaCompatibleTreeMap"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="54,190,51,192,49,190,51,187,54,190,54,190" title="Complexity: 14; Coverage: 0%; Class: TreeMap.TreeMapPrinter" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.TreeMapPrinter"/>
+<area shape="poly" coords="144,206,142,209,139,206,142,204,144,206,144,206" title="Complexity: 2; Coverage: 37%; Class: TreeMap.TreeMapNode" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.TreeMapNode"/>
+<area shape="poly" coords="220,175,218,177,215,175,218,172,220,175,220,175" title="Complexity: 25; Coverage: 68%; Class: TreeMap" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap"/>
+<area shape="poly" coords="54,191,51,194,49,191,51,189,54,191,54,191" title="Complexity: 13; Coverage: 0%; Class: BinarySearch" alt="" href="com/jwetherell/algorithms/search/BinarySearch.html#BinarySearch"/>
+<area shape="poly" coords="107,201,105,203,102,201,105,198,107,201,107,201" title="Complexity: 6; Coverage: 22%; Class: Treap.TreapNode" alt="" href="com/jwetherell/algorithms/data_structures/Treap.html#Treap.TreapNode"/>
+<area shape="poly" coords="249,180,247,183,244,180,247,178,249,180,249,180" title="Complexity: 21; Coverage: 80%; Class: Treap" alt="" href="com/jwetherell/algorithms/data_structures/Treap.html#Treap"/>
+<area shape="poly" coords="249,188,247,191,244,188,247,186,249,188,249,188" title="Complexity: 15; Coverage: 80%; Class: TernarySearchTree.JavaCompatibleTree.TreeIterator" alt="" href="com/jwetherell/algorithms/data_structures/TernarySearchTree.html#TernarySearchTree.JavaCompatibleTree.TreeIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="103,202,100,205,98,202,100,200,103,202,103,202" title="Complexity: 5; Coverage: 20%; Class: TernarySearchTree.Node" alt="" href="com/jwetherell/algorithms/data_structures/TernarySearchTree.html#TernarySearchTree.Node"/>
+<area shape="poly" coords="54,191,51,194,49,191,51,189,54,191,54,191" title="Complexity: 13; Coverage: 0%; Class: BinarySearch" alt="" href="com/jwetherell/algorithms/search/BinarySearch.html#BinarySearch"/>
+<area shape="poly" coords="269,135,267,138,264,135,267,133,269,135,269,135" title="Complexity: 54; Coverage: 88%; Class: TernarySearchTree" alt="" href="com/jwetherell/algorithms/data_structures/TernarySearchTree.html#TernarySearchTree"/>
+<area shape="poly" coords="132,186,129,188,127,186,129,183,132,186,132,186" title="Complexity: 17; Coverage: 32%; Class: SuffixTrie" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTrie.html#SuffixTrie"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="144,165,142,168,139,165,142,163,144,165,144,165" title="Complexity: 32; Coverage: 37%; Class: SuffixTree.Edge" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.Edge"/>
+<area shape="poly" coords="68,198,66,201,63,198,66,196,68,198,68,198" title="Complexity: 8; Coverage: 6%; Class: SuffixTree.Link" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.Link"/>
+<area shape="poly" coords="240,150,237,153,235,150,237,148,240,150,240,150" title="Complexity: 43; Coverage: 76%; Class: SuffixTree" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="294,175,291,177,289,175,291,172,294,175,294,175" title="Complexity: 25; Coverage: 98%; Class: SuffixArray" alt="" href="com/jwetherell/algorithms/data_structures/SuffixArray.html#SuffixArray"/>
+<area shape="poly" coords="249,199,247,202,244,199,247,197,249,199,249,199" title="Complexity: 7; Coverage: 80%; Class: Stack.JavaCompatibleLinkedStack.LinkedStackIterator" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleLinkedStack.LinkedStackIterator"/>
+<area shape="poly" coords="215,197,213,199,210,197,213,194,215,197,215,197" title="Complexity: 9; Coverage: 66%; Class: Stack.JavaCompatibleLinkedStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleLinkedStack"/>
+<area shape="poly" coords="223,202,220,205,218,202,220,200,223,202,223,202" title="Complexity: 5; Coverage: 69%; Class: Stack.JavaCompatibleArrayStack.ArrayStackIterator" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleArrayStack.ArrayStackIterator"/>
+<area shape="poly" coords="215,197,213,199,210,197,213,194,215,197,215,197" title="Complexity: 9; Coverage: 66%; Class: Stack.JavaCompatibleLinkedStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleLinkedStack"/>
+<area shape="poly" coords="115,204,112,206,110,204,112,201,115,204,115,204" title="Complexity: 4; Coverage: 25%; Class: Stack.LinkedStack.Node" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.LinkedStack.Node"/>
+<area shape="poly" coords="223,150,220,153,218,150,220,148,223,150,223,150" title="Complexity: 43; Coverage: 69%; Class: Stack.LinkedStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.LinkedStack"/>
+<area shape="poly" coords="200,163,198,165,195,163,198,160,200,163,200,163" title="Complexity: 34; Coverage: 60%; Class: Stack.ArrayStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.ArrayStack"/>
+<area shape="poly" coords="291,157,289,160,286,157,289,155,291,157,291,157" title="Complexity: 38; Coverage: 97%; Class: SplayTree" alt="" href="com/jwetherell/algorithms/data_structures/SplayTree.html#SplayTree"/>
+<area shape="poly" coords="257,193,254,195,252,193,254,190,257,193,257,193" title="Complexity: 12; Coverage: 83%; Class: SkipListMap.JavaCompatibleTreeMap" alt="" href="com/jwetherell/algorithms/data_structures/SkipListMap.html#SkipListMap.JavaCompatibleTreeMap"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="122,206,120,209,117,206,120,204,122,206,122,206" title="Complexity: 2; Coverage: 28%; Class: SkipListMap.SkipListMapNode" alt="" href="com/jwetherell/algorithms/data_structures/SkipListMap.html#SkipListMap.SkipListMapNode"/>
+<area shape="poly" coords="200,164,198,166,195,164,198,161,200,164,200,164" title="Complexity: 33; Coverage: 60%; Class: SkipListMap" alt="" href="com/jwetherell/algorithms/data_structures/SkipListMap.html#SkipListMap"/>
+<area shape="poly" coords="193,201,191,203,188,201,191,198,193,201,193,201" title="Complexity: 6; Coverage: 57%; Class: SkipList.JavaCompatibleSkipList.SkipListListIterator" alt="" href="com/jwetherell/algorithms/data_structures/SkipList.html#SkipList.JavaCompatibleSkipList.SkipListListIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="127,195,125,198,122,195,125,193,127,195,127,195" title="Complexity: 10; Coverage: 30%; Class: SkipList.Node" alt="" href="com/jwetherell/algorithms/data_structures/SkipList.html#SkipList.Node"/>
+<area shape="poly" coords="252,116,249,119,247,116,249,114,252,116,252,116" title="Complexity: 68; Coverage: 81%; Class: SkipList" alt="" href="com/jwetherell/algorithms/data_structures/SkipList.html#SkipList"/>
+<area shape="poly" coords="269,156,267,158,264,156,267,153,269,156,269,156" title="Complexity: 39; Coverage: 88%; Class: SegmentTree.DynamicSegmentTree.OverlappingSegment" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.DynamicSegmentTree.OverlappingSegment"/>
+<area shape="poly" coords="267,186,264,188,262,186,264,183,267,186,267,186" title="Complexity: 17; Coverage: 87%; Class: SegmentTree.DynamicSegmentTree" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.DynamicSegmentTree"/>
+<area shape="poly" coords="249,154,247,157,244,154,247,152,249,154,249,154" title="Complexity: 40; Coverage: 80%; Class: SegmentTree.FlatSegmentTree.NonOverlappingSegment" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.FlatSegmentTree.NonOverlappingSegment"/>
+<area shape="poly" coords="257,190,254,192,252,190,254,187,257,190,257,190" title="Complexity: 14; Coverage: 83%; Class: SegmentTree.FlatSegmentTree" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.FlatSegmentTree"/>
+<area shape="poly" coords="54,197,51,199,49,197,51,194,54,197,54,197" title="Complexity: 9; Coverage: 0%; Class: Longs" alt="" href="com/jwetherell/algorithms/numbers/Longs.html#Longs"/>
+<area shape="poly" coords="210,198,208,201,205,198,208,196,210,198,210,198" title="Complexity: 8; Coverage: 64%; Class: SegmentTree.Segment" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Segment"/>
+<area shape="poly" coords="198,179,196,181,193,179,196,176,198,179,198,179" title="Complexity: 22; Coverage: 59%; Class: SegmentTree.Data.IntervalData" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data.IntervalData"/>
+<area shape="poly" coords="196,163,193,165,191,163,193,160,196,163,196,163" title="Complexity: 34; Coverage: 58%; Class: SegmentTree.Data.RangeSumData" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data.RangeSumData"/>
+<area shape="poly" coords="183,154,181,157,178,154,181,152,183,154,183,154" title="Complexity: 40; Coverage: 53%; Class: SegmentTree.Data.RangeMinimumData" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data.RangeMinimumData"/>
+<area shape="poly" coords="183,154,181,157,178,154,181,152,183,154,183,154" title="Complexity: 40; Coverage: 53%; Class: SegmentTree.Data.RangeMinimumData" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data.RangeMinimumData"/>
+<area shape="poly" coords="208,182,205,184,203,182,205,179,208,182,208,182" title="Complexity: 20; Coverage: 63%; Class: SegmentTree.Data.QuadrantData" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data.QuadrantData"/>
+<area shape="poly" coords="276,199,274,202,271,199,274,197,276,199,276,199" title="Complexity: 7; Coverage: 91%; Class: SegmentTree.Data" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree.Data"/>
+<area shape="poly" coords="54,208,51,210,49,208,51,205,54,208,54,208" title="Complexity: 1; Coverage: 0%; Class: SegmentTree" alt="" href="com/jwetherell/algorithms/data_structures/SegmentTree.html#SegmentTree"/>
+<area shape="poly" coords="257,194,254,196,252,194,254,191,257,194,257,194" title="Complexity: 11; Coverage: 83%; Class: RedBlackTree.JavaCompatibleRedBlackTree.RedBlackTreeIterator" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.JavaCompatibleRedBlackTree.RedBlackTreeIterator"/>
+<area shape="poly" coords="262,199,259,202,257,199,259,197,262,199,262,199" title="Complexity: 7; Coverage: 85%; Class: RedBlackTree.JavaCompatibleRedBlackTree" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.JavaCompatibleRedBlackTree"/>
+<area shape="poly" coords="54,183,51,186,49,183,51,181,54,183,54,183" title="Complexity: 19; Coverage: 0%; Class: RedBlackTree.RedBlackTreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.RedBlackTreePrinter"/>
+<area shape="poly" coords="196,178,193,180,191,178,193,175,196,178,196,178" title="Complexity: 23; Coverage: 58%; Class: RedBlackTree.RedBlackNode" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.RedBlackNode"/>
+<area shape="poly" coords="259,94,257,97,254,94,257,92,259,94,259,94" title="Complexity: 84; Coverage: 84%; Class: RedBlackTree" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree"/>
+<area shape="poly" coords="276,188,274,191,271,188,274,186,276,188,276,188" title="Complexity: 15; Coverage: 91%; Class: TrieMap.JavaCompatibleTrieMap" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleTrieMap"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="80,202,78,205,75,202,78,200,80,202,80,202" title="Complexity: 5; Coverage: 11%; Class: TrieMap.TrieMapNode" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.TrieMapNode"/>
+<area shape="poly" coords="227,168,225,170,222,168,225,165,227,168,227,168" title="Complexity: 30; Coverage: 71%; Class: RadixTrie" alt="" href="com/jwetherell/algorithms/data_structures/RadixTrie.html#RadixTrie"/>
+<area shape="poly" coords="237,202,235,205,232,202,235,200,237,202,237,202" title="Complexity: 5; Coverage: 75%; Class: Queue.JavaCompatibleLinkedQueue.LinkedQueueIterator" alt="" href="com/jwetherell/algorithms/data_structures/Queue.html#Queue.JavaCompatibleLinkedQueue.LinkedQueueIterator"/>
+<area shape="poly" coords="215,197,213,199,210,197,213,194,215,197,215,197" title="Complexity: 9; Coverage: 66%; Class: Stack.JavaCompatibleLinkedStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleLinkedStack"/>
+<area shape="poly" coords="223,202,220,205,218,202,220,200,223,202,223,202" title="Complexity: 5; Coverage: 69%; Class: Stack.JavaCompatibleArrayStack.ArrayStackIterator" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleArrayStack.ArrayStackIterator"/>
+<area shape="poly" coords="215,197,213,199,210,197,213,194,215,197,215,197" title="Complexity: 9; Coverage: 66%; Class: Stack.JavaCompatibleLinkedStack" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.JavaCompatibleLinkedStack"/>
+<area shape="poly" coords="115,204,112,206,110,204,112,201,115,204,115,204" title="Complexity: 4; Coverage: 25%; Class: Stack.LinkedStack.Node" alt="" href="com/jwetherell/algorithms/data_structures/Stack.html#Stack.LinkedStack.Node"/>
+<area shape="poly" coords="245,152,242,154,240,152,242,149,245,152,245,152" title="Complexity: 42; Coverage: 78%; Class: Queue.LinkedQueue" alt="" href="com/jwetherell/algorithms/data_structures/Queue.html#Queue.LinkedQueue"/>
+<area shape="poly" coords="247,143,245,146,242,143,245,141,247,143,247,143" title="Complexity: 48; Coverage: 79%; Class: Queue.ArrayQueue" alt="" href="com/jwetherell/algorithms/data_structures/Queue.html#Queue.ArrayQueue"/>
+<area shape="poly" coords="54,186,51,188,49,186,51,183,54,186,54,186" title="Complexity: 17; Coverage: 0%; Class: LongestCommonSubsequence.MatrixPair" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence.MatrixPair"/>
+<area shape="poly" coords="247,163,245,165,242,163,245,160,247,163,247,163" title="Complexity: 34; Coverage: 79%; Class: QuadTree.AxisAlignedBoundingBox" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.AxisAlignedBoundingBox"/>
+<area shape="poly" coords="264,191,262,194,259,191,262,189,264,191,264,191" title="Complexity: 13; Coverage: 86%; Class: QuadTree.XYPoint" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.XYPoint"/>
+<area shape="poly" coords="78,191,76,194,73,191,76,189,78,191,78,191" title="Complexity: 13; Coverage: 10%; Class: QuadTree.QuadNode" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.QuadNode"/>
+<area shape="poly" coords="274,163,271,165,269,163,271,160,274,163,274,163" title="Complexity: 34; Coverage: 90%; Class: QuadTree.MxCifQuadTree.MxCifQuadNode" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.MxCifQuadTree.MxCifQuadNode"/>
+<area shape="poly" coords="252,197,249,199,247,197,249,194,252,197,252,197" title="Complexity: 9; Coverage: 81%; Class: QuadTree.MxCifQuadTree" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.MxCifQuadTree"/>
+<area shape="poly" coords="269,157,267,160,264,157,267,155,269,157,269,157" title="Complexity: 38; Coverage: 88%; Class: QuadTree.PointRegionQuadTree.PointRegionQuadNode" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.PointRegionQuadTree.PointRegionQuadNode"/>
+<area shape="poly" coords="245,198,242,201,240,198,242,196,245,198,245,198" title="Complexity: 8; Coverage: 78%; Class: QuadTree.PointRegionQuadTree" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree.PointRegionQuadTree"/>
+<area shape="poly" coords="274,199,271,202,269,199,271,197,274,199,274,199" title="Complexity: 7; Coverage: 90%; Class: QuadTree" alt="" href="com/jwetherell/algorithms/data_structures/QuadTree.html#QuadTree"/>
+<area shape="poly" coords="242,190,240,192,237,190,240,187,242,190,242,190" title="Complexity: 14; Coverage: 77%; Class: Trie.JavaCompatibleTrie.TrieIterator" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie.TrieIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="215,150,213,153,210,150,213,148,215,150,215,150" title="Complexity: 43; Coverage: 66%; Class: PatriciaTrie.Node" alt="" href="com/jwetherell/algorithms/data_structures/PatriciaTrie.html#PatriciaTrie.Node"/>
+<area shape="poly" coords="272,121,269,124,267,121,269,119,272,121,272,121" title="Complexity: 64; Coverage: 89%; Class: PatriciaTrie" alt="" href="com/jwetherell/algorithms/data_structures/PatriciaTrie.html#PatriciaTrie"/>
+<area shape="poly" coords="198,78,196,80,193,78,196,75,198,78,198,78" title="Complexity: 96; Coverage: 59%; Class: Matrix" alt="" href="com/jwetherell/algorithms/data_structures/Matrix.html#Matrix"/>
+<area shape="poly" coords="264,190,262,192,259,190,262,187,264,190,264,190" title="Complexity: 14; Coverage: 86%; Class: LowestCommonAncestor.TreeNode" alt="" href="com/jwetherell/algorithms/data_structures/LowestCommonAncestor.html#LowestCommonAncestor.TreeNode"/>
+<area shape="poly" coords="298,194,296,196,293,194,296,191,298,194,298,194" title="Complexity: 11; Coverage: 100%; Class: LowestCommonAncestor" alt="" href="com/jwetherell/algorithms/data_structures/LowestCommonAncestor.html#LowestCommonAncestor"/>
+<area shape="poly" coords="252,180,249,183,247,180,249,178,252,180,252,180" title="Complexity: 21; Coverage: 81%; Class: List.JavaCompatibleDoublyLinkedList.DoublyLinkedListListIterator" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.JavaCompatibleDoublyLinkedList.DoublyLinkedListListIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="107,202,105,205,102,202,105,200,107,202,107,202" title="Complexity: 5; Coverage: 22%; Class: List.DoublyLinkedList.Node" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.DoublyLinkedList.Node"/>
+<area shape="poly" coords="240,164,237,166,235,164,237,161,240,164,240,164" title="Complexity: 33; Coverage: 76%; Class: List.DoublyLinkedList" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.DoublyLinkedList"/>
+<area shape="poly" coords="249,175,247,177,244,175,247,172,249,175,249,175" title="Complexity: 25; Coverage: 80%; Class: List.JavaCompatibleSinglyLinkedList.SinglyLinkedListListIterator" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.JavaCompatibleSinglyLinkedList.SinglyLinkedListListIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="122,204,120,206,117,204,120,201,122,204,122,204" title="Complexity: 4; Coverage: 28%; Class: List.SinglyLinkedList.Node" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.SinglyLinkedList.Node"/>
+<area shape="poly" coords="249,165,247,168,244,165,247,163,249,165,249,165" title="Complexity: 32; Coverage: 80%; Class: List.SinglyLinkedList" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.SinglyLinkedList"/>
+<area shape="poly" coords="276,195,274,198,271,195,274,193,276,195,276,195" title="Complexity: 10; Coverage: 91%; Class: List.JavaCompatibleArrayList" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.JavaCompatibleArrayList"/>
+<area shape="poly" coords="218,161,215,164,213,161,215,159,218,161,218,161" title="Complexity: 35; Coverage: 67%; Class: List.ArrayList" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.ArrayList"/>
+<area shape="poly" coords="291,193,289,195,286,193,289,190,291,193,291,193" title="Complexity: 12; Coverage: 97%; Class: LCPArray" alt="" href="com/jwetherell/algorithms/data_structures/LCPArray.html#LCPArray"/>
+<area shape="poly" coords="54,186,51,188,49,186,51,183,54,186,54,186" title="Complexity: 17; Coverage: 0%; Class: LongestCommonSubsequence.MatrixPair" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence.MatrixPair"/>
+<area shape="poly" coords="203,183,200,186,198,183,200,181,203,183,203,183" title="Complexity: 19; Coverage: 61%; Class: KdTree.XYZPoint" alt="" href="com/jwetherell/algorithms/data_structures/KdTree.html#KdTree.XYZPoint"/>
+<area shape="poly" coords="220,193,218,195,215,193,218,190,220,193,220,193" title="Complexity: 12; Coverage: 68%; Class: KdTree.KdNode" alt="" href="com/jwetherell/algorithms/data_structures/KdTree.html#KdTree.KdNode"/>
+<area shape="poly" coords="262,204,259,206,257,204,259,201,262,204,262,204" title="Complexity: 4; Coverage: 85%; Class: KdTree.EuclideanComparator" alt="" href="com/jwetherell/algorithms/data_structures/KdTree.html#KdTree.EuclideanComparator"/>
+<area shape="poly" coords="240,87,237,90,235,87,237,85,240,87,240,87" title="Complexity: 89; Coverage: 76%; Class: KdTree" alt="" href="com/jwetherell/algorithms/data_structures/KdTree.html#KdTree"/>
+<area shape="poly" coords="188,171,186,173,183,171,186,168,188,171,188,171" title="Complexity: 28; Coverage: 55%; Class: IntervalTree.IntervalData" alt="" href="com/jwetherell/algorithms/data_structures/IntervalTree.html#IntervalTree.IntervalData"/>
+<area shape="poly" coords="279,147,276,150,274,147,276,145,279,147,279,147" title="Complexity: 45; Coverage: 92%; Class: IntervalTree.Interval" alt="" href="com/jwetherell/algorithms/data_structures/IntervalTree.html#IntervalTree.Interval"/>
+<area shape="poly" coords="54,194,51,196,49,194,51,191,54,194,54,194" title="Complexity: 11; Coverage: 0%; Class: LongestPalindromicSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestPalindromicSubsequence.html#LongestPalindromicSubsequence"/>
+<area shape="poly" coords="262,186,259,188,257,186,259,183,262,186,262,186" title="Complexity: 17; Coverage: 85%; Class: IntervalTree" alt="" href="com/jwetherell/algorithms/data_structures/IntervalTree.html#IntervalTree"/>
+<area shape="poly" coords="298,178,296,180,293,178,296,175,298,178,298,178" title="Complexity: 23; Coverage: 100%; Class: IntervalSum" alt="" href="com/jwetherell/algorithms/data_structures/IntervalSum.html#IntervalSum"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="276,195,274,198,271,195,274,193,276,195,276,195" title="Complexity: 10; Coverage: 91%; Class: List.JavaCompatibleArrayList" alt="" href="com/jwetherell/algorithms/data_structures/List.html#List.JavaCompatibleArrayList"/>
+<area shape="poly" coords="242,204,240,206,237,204,240,201,242,204,242,204" title="Complexity: 4; Coverage: 77%; Class: ImplicitKeyTreap.Pair" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.Pair"/>
+<area shape="poly" coords="191,195,188,198,186,195,188,193,191,195,191,195" title="Complexity: 10; Coverage: 56%; Class: ImplicitKeyTreap.Node" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.Node"/>
+<area shape="poly" coords="269,87,267,90,264,87,267,85,269,87,269,87" title="Complexity: 89; Coverage: 88%; Class: ImplicitKeyTreap" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="205,202,203,205,200,202,203,200,205,202,205,202" title="Complexity: 5; Coverage: 62%; Class: HashMap.Pair" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap.Pair"/>
+<area shape="poly" coords="276,197,274,199,271,197,274,194,276,197,276,197" title="Complexity: 9; Coverage: 91%; Class: HashMap.ProbingHashMap.JavaCompatibleHashMap" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap.ProbingHashMap.JavaCompatibleHashMap"/>
+<area shape="poly" coords="215,138,213,140,210,138,213,135,215,138,215,138" title="Complexity: 52; Coverage: 66%; Class: HashMap.ProbingHashMap" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap.ProbingHashMap"/>
+<area shape="poly" coords="274,198,271,201,269,198,271,196,274,198,274,198" title="Complexity: 8; Coverage: 90%; Class: HashMap.ChainingHashMap.JavaCompatibleHashMap" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap.ChainingHashMap.JavaCompatibleHashMap"/>
+<area shape="poly" coords="196,164,193,166,191,164,193,161,196,164,196,164" title="Complexity: 33; Coverage: 58%; Class: HashMap.ChainingHashMap" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap.ChainingHashMap"/>
+<area shape="poly" coords="205,187,203,190,200,187,203,185,205,187,205,187" title="Complexity: 16; Coverage: 62%; Class: HashMap" alt="" href="com/jwetherell/algorithms/data_structures/HashMap.html#HashMap"/>
+<area shape="poly" coords="272,190,269,192,267,190,269,187,272,190,272,190" title="Complexity: 14; Coverage: 89%; Class: TreeMap.JavaCompatibleTreeMap" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.JavaCompatibleTreeMap"/>
+<area shape="poly" coords="298,208,296,210,293,208,296,205,298,208,298,208" title="Complexity: 1; Coverage: 100%; Class: TrieMap.JavaCompatibleMapEntry" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleMapEntry"/>
+<area shape="poly" coords="232,198,230,201,227,198,230,196,232,198,232,198" title="Complexity: 8; Coverage: 73%; Class: TrieMap.JavaCompatibleIteratorWrapper" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.JavaCompatibleIteratorWrapper"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="176,206,174,209,171,206,174,204,176,206,176,206" title="Complexity: 2; Coverage: 50%; Class: HashArrayMappedTrie.KeyValueNode" alt="" href="com/jwetherell/algorithms/data_structures/HashArrayMappedTrie.html#HashArrayMappedTrie.KeyValueNode"/>
+<area shape="poly" coords="254,180,252,183,249,180,252,178,254,180,254,180" title="Complexity: 21; Coverage: 82%; Class: HashArrayMappedTrie.ArrayNode" alt="" href="com/jwetherell/algorithms/data_structures/HashArrayMappedTrie.html#HashArrayMappedTrie.ArrayNode"/>
+<area shape="poly" coords="240,131,237,134,235,131,237,129,240,131,240,131" title="Complexity: 57; Coverage: 76%; Class: HashArrayMappedTrie" alt="" href="com/jwetherell/algorithms/data_structures/HashArrayMappedTrie.html#HashArrayMappedTrie"/>
+<area shape="poly" coords="213,191,210,194,208,191,210,189,213,191,213,191" title="Complexity: 13; Coverage: 65%; Class: Graph.CostPathPair" alt="" href="com/jwetherell/algorithms/data_structures/Graph.html#Graph.CostPathPair"/>
+<area shape="poly" coords="156,187,154,190,151,187,154,185,156,187,156,187" title="Complexity: 16; Coverage: 42%; Class: Graph.CostVertexPair" alt="" href="com/jwetherell/algorithms/data_structures/Graph.html#Graph.CostVertexPair"/>
+<area shape="poly" coords="247,182,245,184,242,182,245,179,247,182,247,182" title="Complexity: 20; Coverage: 79%; Class: Graph.Edge" alt="" href="com/jwetherell/algorithms/data_structures/Graph.html#Graph.Edge"/>
+<area shape="poly" coords="218,165,215,168,213,165,215,163,218,165,218,165" title="Complexity: 32; Coverage: 67%; Class: Graph.Vertex" alt="" href="com/jwetherell/algorithms/data_structures/Graph.html#Graph.Vertex"/>
+<area shape="poly" coords="242,179,240,181,237,179,240,176,242,179,242,179" title="Complexity: 22; Coverage: 77%; Class: Graph" alt="" href="com/jwetherell/algorithms/data_structures/Graph.html#Graph"/>
+<area shape="poly" coords="171,141,169,143,166,141,169,138,171,141,171,141" title="Complexity: 50; Coverage: 48%; Class: FenwickTree.Data.RangeSumData" alt="" href="com/jwetherell/algorithms/data_structures/FenwickTree.html#FenwickTree.Data.RangeSumData"/>
+<area shape="poly" coords="242,201,240,203,237,201,240,198,242,201,242,201" title="Complexity: 6; Coverage: 77%; Class: FenwickTree.Data" alt="" href="com/jwetherell/algorithms/data_structures/FenwickTree.html#FenwickTree.Data"/>
+<area shape="poly" coords="54,191,51,194,49,191,51,189,54,191,54,191" title="Complexity: 13; Coverage: 0%; Class: BinarySearch" alt="" href="com/jwetherell/algorithms/search/BinarySearch.html#BinarySearch"/>
+<area shape="poly" coords="281,187,279,190,276,187,279,185,281,187,281,187" title="Complexity: 16; Coverage: 93%; Class: FenwickTree" alt="" href="com/jwetherell/algorithms/data_structures/FenwickTree.html#FenwickTree"/>
+<area shape="poly" coords="218,188,215,191,213,188,215,186,218,188,218,188" title="Complexity: 15; Coverage: 67%; Class: DisjointSet.Item" alt="" href="com/jwetherell/algorithms/data_structures/DisjointSet.html#DisjointSet.Item"/>
+<area shape="poly" coords="227,186,225,188,222,186,225,183,227,186,227,186" title="Complexity: 17; Coverage: 71%; Class: DisjointSet" alt="" href="com/jwetherell/algorithms/data_structures/DisjointSet.html#DisjointSet"/>
+<area shape="poly" coords="249,179,247,181,244,179,247,176,249,179,249,179" title="Complexity: 22; Coverage: 80%; Class: CompactSuffixTrie" alt="" href="com/jwetherell/algorithms/data_structures/CompactSuffixTrie.html#CompactSuffixTrie"/>
+<area shape="poly" coords="257,197,254,199,252,197,254,194,257,197,257,197" title="Complexity: 9; Coverage: 83%; Class: BinarySearchTree.JavaCompatibleBinarySearchTree.BinarySearchTreeIterator" alt="" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html#BinarySearchTree.JavaCompatibleBinarySearchTree.BinarySearchTreeIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="120,202,117,205,115,202,117,200,120,202,120,202" title="Complexity: 5; Coverage: 27%; Class: BinarySearchTree.Node" alt="" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html#BinarySearchTree.Node"/>
+<area shape="poly" coords="279,41,276,43,274,41,276,38,279,41,279,41" title="Complexity: 123; Coverage: 92%; Class: BinarySearchTree" alt="" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html#BinarySearchTree"/>
+<area shape="poly" coords="257,197,254,199,252,197,254,194,257,197,257,197" title="Complexity: 9; Coverage: 83%; Class: BinarySearchTree.JavaCompatibleBinarySearchTree.BinarySearchTreeIterator" alt="" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html#BinarySearchTree.JavaCompatibleBinarySearchTree.BinarySearchTreeIterator"/>
+<area shape="poly" coords="262,199,259,202,257,199,259,197,262,199,262,199" title="Complexity: 7; Coverage: 85%; Class: RedBlackTree.JavaCompatibleRedBlackTree" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.JavaCompatibleRedBlackTree"/>
+<area shape="poly" coords="240,201,237,203,235,201,237,198,240,201,240,201" title="Complexity: 6; Coverage: 76%; Class: BinaryHeap.JavaCompatibleBinaryHeapArray.BinaryHeapArrayIterator" alt="" href="com/jwetherell/algorithms/data_structures/BinaryHeap.html#BinaryHeap.JavaCompatibleBinaryHeapArray.BinaryHeapArrayIterator"/>
+<area shape="poly" coords="262,199,259,202,257,199,259,197,262,199,262,199" title="Complexity: 7; Coverage: 85%; Class: RedBlackTree.JavaCompatibleRedBlackTree" alt="" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html#RedBlackTree.JavaCompatibleRedBlackTree"/>
+<area shape="poly" coords="120,202,117,205,115,202,117,200,120,202,120,202" title="Complexity: 5; Coverage: 27%; Class: BinarySearchTree.Node" alt="" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html#BinarySearchTree.Node"/>
+<area shape="poly" coords="54,190,51,192,49,190,51,187,54,190,54,190" title="Complexity: 14; Coverage: 0%; Class: TreeMap.TreeMapPrinter" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.TreeMapPrinter"/>
+<area shape="poly" coords="269,18,267,20,264,18,267,15,269,18,269,18" title="Complexity: 140; Coverage: 88%; Class: BinaryHeap.BinaryHeapTree" alt="" href="com/jwetherell/algorithms/data_structures/BinaryHeap.html#BinaryHeap.BinaryHeapTree"/>
+<area shape="poly" coords="54,186,51,188,49,186,51,183,54,186,54,186" title="Complexity: 17; Coverage: 0%; Class: LongestCommonSubsequence.MatrixPair" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence.MatrixPair"/>
+<area shape="poly" coords="252,72,249,75,247,72,249,70,252,72,252,72" title="Complexity: 100; Coverage: 81%; Class: BinaryHeap.BinaryHeapArray" alt="" href="com/jwetherell/algorithms/data_structures/BinaryHeap.html#BinaryHeap.BinaryHeapArray"/>
+<area shape="poly" coords="208,186,205,188,203,186,205,183,208,186,208,186" title="Complexity: 17; Coverage: 63%; Class: BTree.JavaCompatibleBTree.BTreeIterator" alt="" href="com/jwetherell/algorithms/data_structures/BTree.html#BTree.JavaCompatibleBTree.BTreeIterator"/>
+<area shape="poly" coords="298,201,296,203,293,201,296,198,298,201,298,201" title="Complexity: 6; Coverage: 100%; Class: Trie.JavaCompatibleTrie" alt="" href="com/jwetherell/algorithms/data_structures/Trie.html#Trie.JavaCompatibleTrie"/>
+<area shape="poly" coords="54,194,51,196,49,194,51,191,54,194,54,194" title="Complexity: 11; Coverage: 0%; Class: LongestPalindromicSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestPalindromicSubsequence.html#LongestPalindromicSubsequence"/>
+<area shape="poly" coords="220,154,218,157,215,154,218,152,220,154,220,154" title="Complexity: 40; Coverage: 68%; Class: BTree.Node" alt="" href="com/jwetherell/algorithms/data_structures/BTree.html#BTree.Node"/>
+<area shape="poly" coords="272,64,269,67,267,64,269,62,272,64,272,64" title="Complexity: 106; Coverage: 89%; Class: BTree" alt="" href="com/jwetherell/algorithms/data_structures/BTree.html#BTree"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="254,191,252,194,249,191,252,189,254,191,254,191" title="Complexity: 13; Coverage: 82%; Class: AVLTree.AVLNode" alt="" href="com/jwetherell/algorithms/data_structures/AVLTree.html#AVLTree.AVLNode"/>
+<area shape="poly" coords="276,141,274,143,271,141,274,138,276,141,276,141" title="Complexity: 50; Coverage: 91%; Class: AVLTree" alt="" href="com/jwetherell/algorithms/data_structures/AVLTree.html#AVLTree"/>
+<area shape="poly" coords="54,190,51,192,49,190,51,187,54,190,54,190" title="Complexity: 14; Coverage: 0%; Class: TreeMap.TreeMapPrinter" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.TreeMapPrinter"/>
+<area shape="poly" coords="54,194,51,196,49,194,51,191,54,194,54,194" title="Complexity: 11; Coverage: 0%; Class: LongestPalindromicSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestPalindromicSubsequence.html#LongestPalindromicSubsequence"/>
+<area shape="poly" coords="54,186,51,188,49,186,51,183,54,186,54,186" title="Complexity: 17; Coverage: 0%; Class: LongestCommonSubsequence.MatrixPair" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence.MatrixPair"/>
+<area shape="poly" coords="54,178,51,180,49,178,51,175,54,178,54,178" title="Complexity: 23; Coverage: 0%; Class: MergeSort" alt="" href="com/jwetherell/algorithms/sorts/MergeSort.html#MergeSort"/>
+<area shape="poly" coords="54,201,51,203,49,201,51,198,54,201,54,201" title="Complexity: 6; Coverage: 0%; Class: InsertionSort" alt="" href="com/jwetherell/algorithms/sorts/InsertionSort.html#InsertionSort"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="54,198,51,201,49,198,51,196,54,198,54,198" title="Complexity: 8; Coverage: 0%; Class: SubsequenceCounter" alt="" href="com/jwetherell/algorithms/sequence/SubsequenceCounter.html#SubsequenceCounter"/>
+<area shape="poly" coords="54,201,51,203,49,201,51,198,54,201,54,201" title="Complexity: 6; Coverage: 0%; Class: InsertionSort" alt="" href="com/jwetherell/algorithms/sorts/InsertionSort.html#InsertionSort"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="298,205,296,207,293,205,296,202,298,205,298,205" title="Complexity: 3; Coverage: 100%; Class: TurboMatching.MatchingResult" alt="" href="com/jwetherell/algorithms/graph/TurboMatching.html#TurboMatching.MatchingResult"/>
+<area shape="poly" coords="291,195,289,198,286,195,289,193,291,195,291,195" title="Complexity: 10; Coverage: 97%; Class: TurboMatching" alt="" href="com/jwetherell/algorithms/graph/TurboMatching.html#TurboMatching"/>
+<area shape="poly" coords="54,195,51,198,49,195,51,193,54,195,54,195" title="Complexity: 10; Coverage: 0%; Class: TopologicalSort" alt="" href="com/jwetherell/algorithms/graph/TopologicalSort.html#TopologicalSort"/>
+<area shape="poly" coords="203,198,200,201,198,198,200,196,203,198,203,198" title="Complexity: 8; Coverage: 61%; Class: PushRelabel.Edge" alt="" href="com/jwetherell/algorithms/graph/PushRelabel.html#PushRelabel.Edge"/>
+<area shape="poly" coords="291,168,289,170,286,168,289,165,291,168,291,168" title="Complexity: 30; Coverage: 97%; Class: PushRelabel" alt="" href="com/jwetherell/algorithms/graph/PushRelabel.html#PushRelabel"/>
+<area shape="poly" coords="54,201,51,203,49,201,51,198,54,201,54,201" title="Complexity: 6; Coverage: 0%; Class: InsertionSort" alt="" href="com/jwetherell/algorithms/sorts/InsertionSort.html#InsertionSort"/>
+<area shape="poly" coords="54,197,51,199,49,197,51,194,54,197,54,197" title="Complexity: 9; Coverage: 0%; Class: Longs" alt="" href="com/jwetherell/algorithms/numbers/Longs.html#Longs"/>
+<area shape="poly" coords="54,202,51,205,49,202,51,200,54,202,54,202" title="Complexity: 5; Coverage: 0%; Class: Johnson" alt="" href="com/jwetherell/algorithms/graph/Johnson.html#Johnson"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="294,190,291,192,289,190,291,187,294,190,294,190" title="Complexity: 14; Coverage: 98%; Class: EdmondsKarp" alt="" href="com/jwetherell/algorithms/graph/EdmondsKarp.html#EdmondsKarp"/>
+<area shape="poly" coords="54,184,51,187,49,184,51,182,54,184,54,184" title="Complexity: 18; Coverage: 0%; Class: LongestCommonSubsequence" alt="" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html#LongestCommonSubsequence"/>
+<area shape="poly" coords="298,190,296,192,293,190,296,187,298,190,298,190" title="Complexity: 14; Coverage: 100%; Class: DepthFirstTraversal" alt="" href="com/jwetherell/algorithms/graph/DepthFirstTraversal.html#DepthFirstTraversal"/>
+<area shape="poly" coords="54,193,51,195,49,193,51,190,54,193,54,193" title="Complexity: 12; Coverage: 0%; Class: TrieMap.TrieMapPrinter" alt="" href="com/jwetherell/algorithms/data_structures/TrieMap.html#TrieMap.TrieMapPrinter"/>
+<area shape="poly" coords="54,195,51,198,49,195,51,193,54,195,54,195" title="Complexity: 10; Coverage: 0%; Class: TopologicalSort" alt="" href="com/jwetherell/algorithms/graph/TopologicalSort.html#TopologicalSort"/>
+<area shape="poly" coords="298,190,296,192,293,190,296,187,298,190,298,190" title="Complexity: 14; Coverage: 100%; Class: DepthFirstTraversal" alt="" href="com/jwetherell/algorithms/graph/DepthFirstTraversal.html#DepthFirstTraversal"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="54,187,51,190,49,187,51,185,54,187,54,187" title="Complexity: 16; Coverage: 0%; Class: ImplicitKeyTreap.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html#ImplicitKeyTreap.TreePrinter"/>
+<area shape="poly" coords="272,190,269,192,267,190,269,187,272,190,272,190" title="Complexity: 14; Coverage: 89%; Class: TreeMap.JavaCompatibleTreeMap" alt="" href="com/jwetherell/algorithms/data_structures/TreeMap.html#TreeMap.JavaCompatibleTreeMap"/>
+<area shape="poly" coords="264,161,262,164,259,161,262,159,264,161,264,161" title="Complexity: 35; Coverage: 86%; Class: Primes" alt="" href="com/jwetherell/algorithms/mathematics/Primes.html#Primes"/>
+<area shape="poly" coords="294,190,291,192,289,190,291,187,294,190,294,190" title="Complexity: 14; Coverage: 98%; Class: EdmondsKarp" alt="" href="com/jwetherell/algorithms/graph/EdmondsKarp.html#EdmondsKarp"/>
+<area shape="poly" coords="294,124,291,127,289,124,291,122,294,124,294,124" title="Complexity: 62; Coverage: 98%; Class: Multiplication" alt="" href="com/jwetherell/algorithms/mathematics/Multiplication.html#Multiplication"/>
+<area shape="poly" coords="276,175,274,177,271,175,274,172,276,175,276,175" title="Complexity: 25; Coverage: 91%; Class: Modular" alt="" href="com/jwetherell/algorithms/mathematics/Modular.html#Modular"/>
+<area shape="poly" coords="276,186,274,188,271,186,274,183,276,186,276,186" title="Complexity: 17; Coverage: 91%; Class: LUDecomposition" alt="" href="com/jwetherell/algorithms/mathematics/LUDecomposition.html#LUDecomposition"/>
+<area shape="poly" coords="272,194,269,196,267,194,269,191,272,194,272,194" title="Complexity: 11; Coverage: 89%; Class: Knapsack" alt="" href="com/jwetherell/algorithms/mathematics/Knapsack.html#Knapsack"/>
+<area shape="poly" coords="272,201,269,203,267,201,269,198,272,201,272,201" title="Complexity: 6; Coverage: 89%; Class: GreatestCommonDivisor" alt="" href="com/jwetherell/algorithms/mathematics/GreatestCommonDivisor.html#GreatestCommonDivisor"/>
+<area shape="poly" coords="289,201,286,203,284,201,286,198,289,201,289,201" title="Complexity: 6; Coverage: 96%; Class: FastFourierTransform" alt="" href="com/jwetherell/algorithms/mathematics/FastFourierTransform.html#FastFourierTransform"/>
+<area shape="poly" coords="274,194,271,196,269,194,271,191,274,194,274,194" title="Complexity: 11; Coverage: 90%; Class: Exponentiation" alt="" href="com/jwetherell/algorithms/mathematics/Exponentiation.html#Exponentiation"/>
+<area shape="poly" coords="215,161,213,164,210,161,213,159,215,161,215,161" title="Complexity: 35; Coverage: 66%; Class: Division" alt="" href="com/jwetherell/algorithms/mathematics/Division.html#Division"/>
+<area shape="poly" coords="284,204,281,206,279,204,281,201,284,204,284,204" title="Complexity: 4; Coverage: 94%; Class: Distance" alt="" href="com/jwetherell/algorithms/mathematics/Distance.html#Distance"/>
+<area shape="poly" coords="286,193,284,195,281,193,284,190,286,193,286,193" title="Complexity: 12; Coverage: 95%; Class: DiscreteLogarithm" alt="" href="com/jwetherell/algorithms/mathematics/DiscreteLogarithm.html#DiscreteLogarithm"/>
+<area shape="poly" coords="267,199,264,202,262,199,264,197,267,199,267,199" title="Complexity: 7; Coverage: 87%; Class: Coprimes" alt="" href="com/jwetherell/algorithms/mathematics/Coprimes.html#Coprimes"/>
+<area shape="poly" coords="54,126,51,128,49,126,51,123,54,126,54,126" title="Complexity: 61; Coverage: 0%; Class: StringFunctions" alt="" href="com/jwetherell/algorithms/strings/StringFunctions.html#StringFunctions"/>
+<area shape="poly" coords="54,188,51,191,49,188,51,186,54,188,54,188" title="Complexity: 15; Coverage: 0%; Class: SuffixTree.TreePrinter" alt="" href="com/jwetherell/algorithms/data_structures/SuffixTree.html#SuffixTree.TreePrinter"/>
+<area shape="poly" coords="294,190,291,192,289,190,291,187,294,190,294,190" title="Complexity: 14; Coverage: 98%; Class: EdmondsKarp" alt="" href="com/jwetherell/algorithms/graph/EdmondsKarp.html#EdmondsKarp"/>
+<area shape="poly" coords="286,199,284,202,281,199,284,197,286,199,286,199" title="Complexity: 7; Coverage: 95%; Class: KnuthMorrisPratt" alt="" href="com/jwetherell/algorithms/strings/KnuthMorrisPratt.html#KnuthMorrisPratt"/>
+</map>
+            </div>
+        </div>
+        
+                    <div class="dashboard-widget">
+                <header class="dashboard-widget-header">
+                    <h3>Coverage tree map</h3>
+                </header>
+                <div class="dashboard-widget-content">
+                    <div id="infovis" style="width:100%; height:250px;">
+                        <div id="treemap-loader" style="position:relative;top:50px;">
+                            <p>
+                                Generating Coverage Tree Map. Please wait...
+                            </p>
+                            <p>
+                                <img src="img/ajax-loader.gif" alt="Loading Treemap"/>
+                            </p>
+                        </div>
+                    </div>
+                    <p><a href="treemap.html">See more</a></p>
+                </div>
+
+            </div>
+            </div>
+
+
+    <div class="aui-item">
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Top 20 project risks</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/SplayTree.html"
+                            style="font-size: 25px;color:#89c495"
+                            title="Average Method Complexity - 9,5 , Coverage - 97,4% ">SplayTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/mathematics/Multiplication.html"
+                            style="font-size: 23px;color:#89c495"
+                            title="Average Method Complexity - 7,75 , Coverage - 98,5% ">Multiplication</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/IntervalTree.html"
+                            style="font-size: 28px;color:#14892c"
+                            title="Average Method Complexity - 11,25 , Coverage - 92,3% ">IntervalTree.Interval</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/strings/Manacher.html"
+                            style="font-size: 21px;color:#89c495"
+                            title="Average Method Complexity - 7 , Coverage - 98,1% ">Manacher</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/mathematics/Knapsack.html"
+                            style="font-size: 27px;color:#14892c"
+                            title="Average Method Complexity - 11 , Coverage - 89,6% ">Knapsack</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/graph/EdmondsKarp.html"
+                            style="font-size: 18px;color:#89c495"
+                            title="Average Method Complexity - 4,667 , Coverage - 98,4% ">EdmondsKarp</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/AVLTree.html"
+                            style="font-size: 19px;color:#14892c"
+                            title="Average Method Complexity - 5,556 , Coverage - 91,6% ">AVLTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/mathematics/Primes.html"
+                            style="font-size: 24px;color:#14892c"
+                            title="Average Method Complexity - 8,75 , Coverage - 86,8% ">Primes</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/SegmentTree.html"
+                            style="font-size: 23px;color:#14892c"
+                            title="Average Method Complexity - 7,8 , Coverage - 89% ">SegmentTree.DynamicSegmentTree.OverlappingSegment</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html"
+                            style="font-size: 18px;color:#14892c"
+                            title="Average Method Complexity - 4,393 , Coverage - 92,2% ">BinarySearchTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/BTree.html"
+                            style="font-size: 19px;color:#14892c"
+                            title="Average Method Complexity - 5,579 , Coverage - 89,9% ">BTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/BinaryHeap.html"
+                            style="font-size: 20px;color:#14892c"
+                            title="Average Method Complexity - 6,087 , Coverage - 88,2% ">BinaryHeap.BinaryHeapTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/mathematics/LUDecomposition.html"
+                            style="font-size: 18px;color:#14892c"
+                            title="Average Method Complexity - 4,25 , Coverage - 91,8% ">LUDecomposition</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/mathematics/Modular.html"
+                            style="font-size: 17px;color:#14892c"
+                            title="Average Method Complexity - 4,167 , Coverage - 91,4% ">Modular</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html"
+                            style="font-size: 21px;color:#14892c"
+                            title="Average Method Complexity - 6,462 , Coverage - 84,6% ">RedBlackTree</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/strings/KnuthMorrisPratt.html"
+                            style="font-size: 16px;color:#89c495"
+                            title="Average Method Complexity - 3,5 , Coverage - 95,7% ">KnuthMorrisPratt</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/PatriciaTrie.html"
+                            style="font-size: 18px;color:#14892c"
+                            title="Average Method Complexity - 4,267 , Coverage - 89,3% ">PatriciaTrie</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/graph/PushRelabel.html"
+                            style="font-size: 16px;color:#89c495"
+                            title="Average Method Complexity - 3,333 , Coverage - 97,7% ">PushRelabel</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/graph/TurboMatching.html"
+                            style="font-size: 16px;color:#89c495"
+                            title="Average Method Complexity - 3,333 , Coverage - 97,2% ">TurboMatching</a>
+                                    
+                                                                <a class="tag" href="com/jwetherell/algorithms/data_structures/QuadTree.html"
+                            style="font-size: 17px;color:#14892c"
+                            title="Average Method Complexity - 3,778 , Coverage - 90,3% ">QuadTree.MxCifQuadTree.MxCifQuadNode</a>
+                                                    <p><a href="top-risks.html">See more</a></p>
+            </div>
+        </div>
+
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Most complex packages</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                
+                <table class="aui">
+                                            
+                                                <tr>
+                            <td>1. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.70799965</span>70,8%</div><div style="display: table-cell">
+ <div title="70,8% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:70.8%"></div></div></div></div></td>
+                            <td>
+                                <a href="com/jwetherell/algorithms/data_structures/pkg-summary.html">com.jwetherell.algorithms.data_structures</a>
+                                <span class="aui-badge" title="Package complexity">3660</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>2. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.90936255</span>90,9%</div><div style="display: table-cell">
+ <div title="90,9% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:90.9%"></div></div></div></div></td>
+                            <td>
+                                <a href="com/jwetherell/algorithms/mathematics/pkg-summary.html">com.jwetherell.algorithms.mathematics</a>
+                                <span class="aui-badge" title="Package complexity">259</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>3. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.42587066</span>42,6%</div><div style="display: table-cell">
+ <div title="42,6% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:42.6%"></div></div></div></div></td>
+                            <td>
+                                <a href="com/jwetherell/algorithms/graph/pkg-summary.html">com.jwetherell.algorithms.graph</a>
+                                <span class="aui-badge" title="Package complexity">210</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>4. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                            <td>
+                                <a href="com/jwetherell/algorithms/sorts/pkg-summary.html">com.jwetherell.algorithms.sorts</a>
+                                <span class="aui-badge" title="Package complexity">116</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>5. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.18316832</span>18,3%</div><div style="display: table-cell">
+ <div title="18,3% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:18.3%"></div></div></div></div></td>
+                            <td>
+                                <a href="com/jwetherell/algorithms/strings/pkg-summary.html">com.jwetherell.algorithms.strings</a>
+                                <span class="aui-badge" title="Package complexity">97</span>
+                            </td>
+                        </tr>
+                                    </table>
+            </div>
+        </div>
+
+        <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Most complex classes</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                <table class="aui">
+                                            
+                                                <tr>
+                            <td>1. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.8821989</span>88,2%</div><div style="display: table-cell">
+ <div title="88,2% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:88.2%"></div></div></div></div></td>
+                            <td>
+                                <a  href="com/jwetherell/algorithms/data_structures/BinaryHeap.html"  title="com.jwetherell.algorithms.data_structures.BinaryHeap.BinaryHeapTree">BinaryHeap.BinaryHeapTree</a>
+                                <span class="aui-badge" title="Class complexity">140</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>2. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.92156863</span>92,2%</div><div style="display: table-cell">
+ <div title="92,2% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:92.2%"></div></div></div></div></td>
+                            <td>
+                                <a  href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html"  title="com.jwetherell.algorithms.data_structures.BinarySearchTree">BinarySearchTree</a>
+                                <span class="aui-badge" title="Class complexity">123</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>3. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.8986175</span>89,9%</div><div style="display: table-cell">
+ <div title="89,9% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:89.9%"></div></div></div></div></td>
+                            <td>
+                                <a  href="com/jwetherell/algorithms/data_structures/BTree.html"  title="com.jwetherell.algorithms.data_structures.BTree">BTree</a>
+                                <span class="aui-badge" title="Class complexity">106</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>4. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.8125</span>81,2%</div><div style="display: table-cell">
+ <div title="81,2% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:81.2%"></div></div></div></div></td>
+                            <td>
+                                <a  href="com/jwetherell/algorithms/data_structures/BinaryHeap.html"  title="com.jwetherell.algorithms.data_structures.BinaryHeap.BinaryHeapArray">BinaryHeap.BinaryHeapArray</a>
+                                <span class="aui-badge" title="Class complexity">100</span>
+                            </td>
+                        </tr>
+                                            
+                                                <tr>
+                            <td>5. </td>
+                            <td><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.5966851</span>59,7%</div><div style="display: table-cell">
+ <div title="59,7% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:59.7%"></div></div></div></div></td>
+                            <td>
+                                <a  href="com/jwetherell/algorithms/data_structures/Matrix.html"  title="com.jwetherell.algorithms.data_structures.Matrix">Matrix</a>
+                                <span class="aui-badge" title="Class complexity">96</span>
+                            </td>
+                        </tr>
+                                    </table>
+            </div>
+        </div>
+
+                <div class="dashboard-widget">
+            <header class="dashboard-widget-header">
+                <h3>Least tested methods</h3>
+            </header>
+            <div class="dashboard-widget-content">
+                <table class="aui">
+                                            
+
+                    <tr>
+                        <td align="right">1.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="FloydWarshall.getAllPairsShortestPaths(Graph&lt;Integer&gt;)&#160;:&#160;Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Integer&gt;&gt;" href="com/jwetherell/algorithms/graph/FloydWarshall.html?line=23#src-23">FloydWarshall.getAllPairsShortestPaths(Graph&lt;Integer&gt;)&#160;:&#160;Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Integer&gt;&gt;</a>
+                            <span class="aui-badge" title="Method complexity">15</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">2.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="Dijkstra.getShortestPath(Graph&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;List&lt;Graph.Edge&lt;Integer&gt;&gt;&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Graph.CostVertexPair&lt;Integer&gt;&gt;)&#160;:&#160;Graph.CostPathPair&lt;Integer&gt;" href="com/jwetherell/algorithms/graph/Dijkstra.html?line=57#src-57">Dijkstra.getShortestPath(Graph&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;List&lt;Graph.Edge&lt;Integer&gt;&gt;&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Graph.CostVertexPair&lt;Integer&gt;&gt;)&#160;:&#160;Graph.CostPathPair&lt;Integer&gt;</a>
+                            <span class="aui-badge" title="Method complexity">11</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">3.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="Integers.toEnglish(int)&#160;:&#160;String" href="com/jwetherell/algorithms/numbers/Integers.html?line=174#src-174">Integers.toEnglish(int)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">15</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">4.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="AmericanFlagSort.sort(Integer[],int,int,int)&#160;:&#160;void" href="com/jwetherell/algorithms/sorts/AmericanFlagSort.html?line=39#src-39">AmericanFlagSort.sort(Integer[],int,int,int)&#160;:&#160;void</a>
+                            <span class="aui-badge" title="Method complexity">10</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">5.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="SuffixTree.TreePrinter.getString(SuffixTree&lt;C&gt;,Edge&lt;C&gt;,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/SuffixTree.html?line=510#src-510">SuffixTree.TreePrinter.getString(SuffixTree&lt;C&gt;,Edge&lt;C&gt;,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">13</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">6.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="TopologicalSort.sort(Graph&lt;Integer&gt;)&#160;:&#160;List&lt;Graph.Vertex&lt;Integer&gt;&gt;" href="com/jwetherell/algorithms/graph/TopologicalSort.html?line=29#src-29">TopologicalSort.sort(Graph&lt;Integer&gt;)&#160;:&#160;List&lt;Graph.Vertex&lt;Integer&gt;&gt;</a>
+                            <span class="aui-badge" title="Method complexity">9</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">7.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="KdTree.TreePrinter.getString(KdNode,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/KdTree.html?line=749#src-749">KdTree.TreePrinter.getString(KdNode,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">15</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">8.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="BinarySearchTree.TreePrinter.getString(Node&lt;T&gt;,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/BinarySearchTree.html?line=671#src-671">BinarySearchTree.TreePrinter.getString(Node&lt;T&gt;,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">14</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">9.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="HashArrayMappedTrie.TreePrinter.getString(Node,Node,int,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/HashArrayMappedTrie.html?line=466#src-466">HashArrayMappedTrie.TreePrinter.getString(Node,Node,int,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">14</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">10.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="ImplicitKeyTreap.TreePrinter.getString(Node&lt;T&gt;,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/ImplicitKeyTreap.html?line=623#src-623">ImplicitKeyTreap.TreePrinter.getString(Node&lt;T&gt;,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">14</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">11.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="BellmanFord.getShortestPath(Graph&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;List&lt;Graph.Edge&lt;Integer&gt;&gt;&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Graph.CostVertexPair&lt;Integer&gt;&gt;)&#160;:&#160;void" href="com/jwetherell/algorithms/graph/BellmanFord.html?line=70#src-70">BellmanFord.getShortestPath(Graph&lt;Integer&gt;,Graph.Vertex&lt;Integer&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;List&lt;Graph.Edge&lt;Integer&gt;&gt;&gt;,Map&lt;Graph.Vertex&lt;Integer&gt;,&#160;Graph.CostVertexPair&lt;Integer&gt;&gt;)&#160;:&#160;void</a>
+                            <span class="aui-badge" title="Method complexity">9</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">12.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="HeapSort.sortHeap(T[])&#160;:&#160;void" href="com/jwetherell/algorithms/sorts/HeapSort.html?line=31#src-31">HeapSort.sortHeap(T[])&#160;:&#160;void</a>
+                            <span class="aui-badge" title="Method complexity">8</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">13.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="AStar.aStar(Graph&lt;T&gt;,Graph.Vertex&lt;T&gt;,Graph.Vertex&lt;T&gt;)&#160;:&#160;List&lt;Graph.Edge&lt;T&gt;&gt;" href="com/jwetherell/algorithms/graph/AStar.html?line=41#src-41">AStar.aStar(Graph&lt;T&gt;,Graph.Vertex&lt;T&gt;,Graph.Vertex&lt;T&gt;)&#160;:&#160;List&lt;Graph.Edge&lt;T&gt;&gt;</a>
+                            <span class="aui-badge" title="Method complexity">6</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">14.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="RadixTrie.RadixTreePrinter.getString(PatriciaTrie.Node,String,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/RadixTrie.html?line=207#src-207">RadixTrie.RadixTreePrinter.getString(PatriciaTrie.Node,String,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">14</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">15.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="MergeSort.mergeWithExtraStorage(int,int,int,int,T[])&#160;:&#160;void" href="com/jwetherell/algorithms/sorts/MergeSort.html?line=72#src-72">MergeSort.mergeWithExtraStorage(int,int,int,int,T[])&#160;:&#160;void</a>
+                            <span class="aui-badge" title="Method complexity">12</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">16.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="LongestCommonSubsequence.longestCommonSubsequence(int,int,char[],char[])&#160;:&#160;int" href="com/jwetherell/algorithms/sequence/LongestCommonSubsequence.html?line=44#src-44">LongestCommonSubsequence.longestCommonSubsequence(int,int,char[],char[])&#160;:&#160;int</a>
+                            <span class="aui-badge" title="Method complexity">10</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">17.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="QuadTree.TreePrinter.getString(QuadNode&lt;T&gt;,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/QuadTree.html?line=990#src-990">QuadTree.TreePrinter.getString(QuadNode&lt;T&gt;,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">15</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">18.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="StringFunctions.generateSubsets(String)&#160;:&#160;String[]" href="com/jwetherell/algorithms/strings/StringFunctions.html?line=211#src-211">StringFunctions.generateSubsets(String)&#160;:&#160;String[]</a>
+                            <span class="aui-badge" title="Method complexity">9</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">19.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="StringFunctions.swapWords(int,int,int,int,char[])&#160;:&#160;void" href="com/jwetherell/algorithms/strings/StringFunctions.html?line=141#src-141">StringFunctions.swapWords(int,int,int,int,char[])&#160;:&#160;void</a>
+                            <span class="aui-badge" title="Method complexity">7</span>
+
+                        </td>
+                    </tr>
+                                            
+
+                    <tr>
+                        <td align="right">20.</td>
+                        <td align="right"><div style="display: table; width: 100%">
+<div class="barGraphValue"><span class="sortValue">0.0</span>0%</div><div style="display: table-cell">
+ <div title="0% Covered"  style="min-width:40px;" class="barNegative contribBarNegative "><div class="barPositive contribBarPositive " style="width:0%"></div></div></div></div></td>
+                        <td>
+                              <!-- normal method -->
+                                                      <a title="RedBlackTree.RedBlackTreePrinter.getString(RedBlackNode&lt;T&gt;,String,boolean)&#160;:&#160;String" href="com/jwetherell/algorithms/data_structures/RedBlackTree.html?line=535#src-535">RedBlackTree.RedBlackTreePrinter.getString(RedBlackNode&lt;T&gt;,String,boolean)&#160;:&#160;String</a>
+                            <span class="aui-badge" title="Method complexity">15</span>
+
+                        </td>
+                    </tr>
+                                    </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
+                            </div> <!-- tabs-pane active-pane -->
+                        </div>
+
+    <script type="text/javascript" src="jit.js" ></script>
+    <script type="text/javascript" src="treemap-dash-json.js" ></script>
+
+                        </div> <!-- class="aui-page-panel-content-clover" -->
+                    <footer id="footer" role="contentinfo">
+    <section class="footer-body">
+        <ul>
+            <li>
+                Report generated by <a target="_new" href="http://openclover.org">OpenClover</a> v 4.4.1
+                on ons feb. 24 2021 13:18:30 CET using coverage data from ons feb. 24 2021 13:18:26 CET.
+            </li>
+        </ul>
+        <ul>
+            <li>OpenClover is free and open-source software. </li>
+        </ul>
+    </section>
+</footer>                </section> <!-- class="aui-page-panel-content" -->
+            </div> <!-- class="aui-page-panel-inner" -->
+        </div> <!-- class="aui-page-panel" -->
+    </div> <!-- id="page" -->
+</body>
+</html>
