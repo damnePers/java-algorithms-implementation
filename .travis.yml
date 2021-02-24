@@ -18,7 +18,7 @@ jdk:
 
 #  - openjdk9
   - openjdk8
-  - openjdk7
+#  - openjdk7
 # - openjdk6
 
 env:
@@ -31,4 +31,4 @@ env:
 #  - TEST_SUITE=data_structures
 #  - TEST_SUITE=sorts
 
-script: "ant $TEST_SUITE"
+script: mvn test
