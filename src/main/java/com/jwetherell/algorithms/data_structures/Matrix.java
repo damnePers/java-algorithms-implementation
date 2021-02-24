@@ -335,17 +335,6 @@ public class Matrix<T extends Number> {
         visited[24] = true; //branch 24
         return output;//reached when outer for-loop condition isn't met,  branch id #2
     }
-    // help-method to count which branches has been visited
-    public void printVisited(boolean[] visited){
-      int numVisited = 0;
-      for (boolean b : visited) {
-          if (b) numVisited++;
-      }
-      double percentage = (double) numVisited/visited.length;
-      System.out.println("Visited: \t\t"+numVisited);
-      System.out.println("Total: \t\t\t"+visited.length);
-      System.out.println("Percentage: \t"+percentage);
-    }
 
     public void copy(Matrix<T> m) {
         for (int r = 0; r < m.rows; r++) {
