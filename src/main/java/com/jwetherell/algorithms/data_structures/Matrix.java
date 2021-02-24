@@ -2,7 +2,6 @@ package com.jwetherell.algorithms.data_structures;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -15,10 +14,7 @@ import java.util.Comparator;
  */
 @SuppressWarnings("unchecked")
 public class Matrix<T extends Number> {
-
-    // Start measuring branch coverage
     public static boolean[] branchesVisited = new boolean[14];
-    // End measuring branch coverage
     private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
@@ -160,62 +156,41 @@ public class Matrix<T extends Number> {
         return identityMatrix;
     }
 
-    public Matrix<T> add(Matrix<T> input) throws IllegalArgumentException{
+    public Matrix<T> add(Matrix<T> input) {
         Matrix<T> output = new Matrix<T>(this.rows, this.cols);
-        if ((this.cols != input.cols) || (this.rows != input.rows)) {
-            branchesVisited[0] = true;  // branch 0
-            throw new IllegalArgumentException("Number of rows and/or cols are not equal");
-        } else {
-            branchesVisited[9] = true; // branch 9
-        }
-        int r = 0;
-        int c = 0;
-        int i = 0;
-        for (r = 0; r < output.rows; r++) {
-            branchesVisited[1] = true;  // branch 1
-            for (c = 0; c < output.cols; c++) {
-                branchesVisited[2] = true;  // branch 2
-                for (i = 0; i < cols; i++) {
-                    branchesVisited[3] = true;  // branch 3
+        if ((this.cols != input.cols) || (this.rows != input.rows))
+            return output;
+        for (int r = 0; r < output.rows; r++) {
+            for (int c = 0; c < output.cols; c++) {
+                for (int i = 0; i < cols; i++) {
                     T m1 = this.get(r, c);
                     T m2 = input.get(r, c);
                     T result;
                     /* TODO: This is ugly and how to handle number overflow? */
                     if (m1 instanceof BigDecimal || m2 instanceof BigDecimal) {
-                        branchesVisited[4] = true;  // branch 4
-                        BigDecimal result2 = ((BigDecimal) m1).add((BigDecimal) m2);
-                        result = (T) result2;
+                        BigDecimal result2 = ((BigDecimal)m1).add((BigDecimal)m2);
+                        result = (T)result2;
                     } else if (m1 instanceof BigInteger || m2 instanceof BigInteger) {
-                        branchesVisited[5] = true;  // branch 5
-                        BigInteger result2 = ((BigInteger) m1).add((BigInteger) m2);
-                        result = (T) result2;
+                        BigInteger result2 = ((BigInteger)m1).add((BigInteger)m2);
+                        result = (T)result2;
                     } else if (m1 instanceof Long || m2 instanceof Long) {
-                        branchesVisited[6] = true;  // branch 6
                         Long result2 = (m1.longValue() + m2.longValue());
-                        result = (T) result2;
+                        result = (T)result2;
                     } else if (m1 instanceof Double || m2 instanceof Double) {
-                        branchesVisited[7] = true;  // branch 7
                         Double result2 = (m1.doubleValue() + m2.doubleValue());
-                        result = (T) result2;
+                        result = (T)result2;
                     } else if (m1 instanceof Float || m2 instanceof Float) {
-                        branchesVisited[8] = true;  // branch 8
                         Float result2 = (m1.floatValue() + m2.floatValue());
-                        result = (T) result2;
+                        result = (T)result2;
                     } else {
-                        branchesVisited[13] = true;  // branch 13
                         // Integer
                         Integer result2 = (m1.intValue() + m2.intValue());
-                        result = (T) result2;
+                        result = (T)result2;
                     }
                     output.set(r, c, result);
                 }
             }
         }
-        // Start counting branches
-        if (r >= output.rows) branchesVisited[10] = true;
-        if (c >= output.cols) branchesVisited[11] = true;
-        if (i >= cols) branchesVisited[12] = true;
-        // End counting branches
         return output;
     }
 
@@ -260,8 +235,9 @@ public class Matrix<T extends Number> {
 
     public Matrix<T> multiply(Matrix<T> input) {
         Matrix<T> output = new Matrix<T>(this.rows, input.cols);
-        if (this.cols != input.rows)
+        if (this.cols != input.rows){
             return output;
+        }
 
         for (int r = 0; r < output.rows; r++) {
             for (int c = 0; c < output.cols; c++) {
@@ -270,71 +246,108 @@ public class Matrix<T extends Number> {
                 T test = row[0];
                 /* TODO: This is ugly and how to handle number overflow? */
                 if (test instanceof BigDecimal) {
-                    BigDecimal result = BigDecimal.ZERO;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
+                  BigDecimal result = BigDecimal.ZERO;
+                  result = calculateBigDecimal(input, row, column);
+                  output.set(r, c, (T)result);
 
-                        BigDecimal result2 = ((BigDecimal)m1).multiply(((BigDecimal)m2));
-                        result = result.add(result2);
-                    }
-                    output.set(r, c, (T)result);
                 } else if (test instanceof BigInteger) {
-                    BigInteger result = BigInteger.ZERO;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
+                  BigInteger result = BigInteger.ZERO;
+                  result = calculateBigInteger(input, row, column);
+                  output.set(r, c, (T)result);
 
-                        BigInteger result2 = ((BigInteger)m1).multiply(((BigInteger)m2));
-                        result = result.add(result2);
-                    }
-                    output.set(r, c, (T)result);
                 } else if (test instanceof Long) {
-                    Long result = 0l;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
+                  Long result = 0l;
+                  result = calculateLong(input, row, column);
+                  output.set(r, c, (T)result);
 
-                        Long result2 = m1.longValue() * m2.longValue();
-                        result = result+result2;
-                    }
-                    output.set(r, c, (T)result);
                 } else if (test instanceof Double) {
-                    Double result = 0d;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
+                  Double result = 0d;
+                  result = calculateDouble(input, row, column);
+                  output.set(r, c, (T)result);
 
-                        Double result2 = m1.doubleValue() * m2.doubleValue();
-                        result = result+result2;
-                    }
-                    output.set(r, c, (T)result);
                 } else if (test instanceof Float) {
                     Float result = 0f;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
-
-                        Float result2 = m1.floatValue() * m2.floatValue();
-                        result = result+result2;
-                    }
+                    result = calculateFloat(input, row, column);
                     output.set(r, c, (T)result);
-                } else {
-                    // Integer
+
+                } else {// Integer
                     Integer result = 0;
-                    for (int i = 0; i < cols; i++) {
-                        T m1 = row[i];
-                        T m2 = column[i];
-
-                        Integer result2 = m1.intValue() * m2.intValue();
-                        result = result+result2;
-                    }
+                    result = calculateInteger(input, row, column);
                     output.set(r, c, (T)result);
+
                 }
             }
         }
-        return output;
+        return output;//reached when outer for-loop condition isn't met
     }
+    // Method to decrease CCN for multiply
+    public BigDecimal calculateBigDecimal(Matrix<T> input, T[] row, T[] column){
+      BigDecimal result = BigDecimal.ZERO;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          BigDecimal result2 = ((BigDecimal)m1).multiply(((BigDecimal)m2));
+          result = result.add(result2);
+      }
+      return result;
+    }
+    public BigInteger calculateBigInteger(Matrix<T> input, T[] row, T[] column){
+      BigInteger result = BigInteger.ZERO;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          BigInteger result2 = ((BigInteger)m1).multiply(((BigInteger)m2));
+          result = result.add(result2);
+      }
+      return result;
+    }
+    public Long calculateLong(Matrix<T> input, T[] row, T[] column){
+      Long result = 0l;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          Long result2 = m1.longValue() * m2.longValue();
+          result = result+result2;
+      }
+      return result;
+    }
+    public Double calculateDouble(Matrix<T> input, T[] row, T[] column){
+      Double result = 0d;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          Double result2 = m1.doubleValue() * m2.doubleValue();
+          result = result+result2;
+      }
+      return result;
+    }
+    public Float calculateFloat(Matrix<T> input, T[] row, T[] column){
+      Float result = 0f;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          Float result2 = m1.floatValue() * m2.floatValue();
+          result = result+result2;
+      }
+      return result;
+    }
+    public Integer calculateInteger(Matrix<T> input, T[] row, T[] column){
+      Integer result = 0;
+      for (int i = 0; i < cols; i++) {
+          T m1 = row[i];
+          T m2 = column[i];
+
+          Integer result2 = m1.intValue() * m2.intValue();
+          result = result+result2;
+      }
+      return result;
+    }
+
 
     public void copy(Matrix<T> m) {
         for (int r = 0; r < m.rows; r++) {
