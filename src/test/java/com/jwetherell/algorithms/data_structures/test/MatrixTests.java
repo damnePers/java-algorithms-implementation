@@ -1,12 +1,15 @@
 package com.jwetherell.algorithms.data_structures.test;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-import static org.junit.Assert.assertArrayEquals;
 import org.junit.Test;
 import java.math.BigDecimal;  
 
 import com.jwetherell.algorithms.data_structures.Matrix;
+import org.junit.function.ThrowingRunnable;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
+import static org.junit.Assert.*;
 
 public class MatrixTests {
 
@@ -88,8 +91,9 @@ public class MatrixTests {
         Matrix<Integer> matrix9 = matrix7.multiply(matrix8);
         assertTrue("Matrix multiplication error. matrix9="+matrix9+" result4"+result4, matrix9.equals(result4));
     }
+
     /*
-      Added test cases for task 2
+      Added test cases for multiply task 2
      */
        @Test
        public void testMatrixBigDecimal() {
@@ -159,6 +163,7 @@ public class MatrixTests {
               Matrix<Float> matrix18 = matrix17.multiply(matrix17);
               assertTrue("Matrix multiplication error. matrix18="+matrix18+" result8"+result8, matrix18.equals(result8));
       }
+  
 
     @Test
     public void testIdentityMethod1() {
@@ -183,4 +188,168 @@ public class MatrixTests {
         assertArrayEquals(expectedResult.getRow(0), matrix.getRow(0));
         assertArrayEquals(expectedResult.getRow(1), matrix.getRow(1));
     }
+
+
+    @Test
+    public void notSameNumberOfRowsAndCols() {
+        Matrix<Integer> matrix1 = new Matrix<Integer>(3, 2);
+        matrix1.set(0, 0, 5);
+        matrix1.set(0, 1, 5);
+        matrix1.set(1, 0, 5);
+        matrix1.set(1, 1, 5);
+        matrix1.set(2, 0, 5);
+        matrix1.set(2, 1, 5);
+
+        Matrix<Integer> matrix2 = new Matrix<Integer>(2, 3);
+        matrix2.set(0, 0, 4);
+        matrix2.set(0, 1, 4);
+        matrix2.set(0, 2, 4);
+        matrix2.set(1, 0, 4);
+        matrix2.set(1, 1, 4);
+        matrix2.set(1, 2, 4);
+
+        // Assert that the adding two matrices of different size results in an exception
+        assertThrows(IllegalArgumentException.class, new ThrowingRunnable() {
+            @Override
+            public void run() throws Throwable {
+                matrix1.add(matrix2);}
+        });
+    }
+
+    @Test
+    public void matricesOfBigInteger() {
+        Matrix<BigInteger> matrix1 = new Matrix<BigInteger>(3, 2);
+        matrix1.set(0, 0, BigInteger.valueOf(1));
+        matrix1.set(0, 1, BigInteger.valueOf(1));
+        matrix1.set(1, 0, BigInteger.valueOf(1));
+        matrix1.set(1, 1, BigInteger.valueOf(1));
+        matrix1.set(2, 0, BigInteger.valueOf(1));
+        matrix1.set(2, 1, BigInteger.valueOf(1));
+
+        Matrix<BigInteger> matrix2 = new Matrix<BigInteger>(3, 2);
+        matrix2.set(0, 0, BigInteger.valueOf(2));
+        matrix2.set(0, 1, BigInteger.valueOf(2));
+        matrix2.set(1, 0, BigInteger.valueOf(2));
+        matrix2.set(1, 1, BigInteger.valueOf(2));
+        matrix2.set(2, 0, BigInteger.valueOf(2));
+        matrix2.set(2, 1, BigInteger.valueOf(2));
+
+        //Result
+        BigInteger[][] rowsNcols = new BigInteger[][]{{BigInteger.valueOf(3),BigInteger.valueOf(3)},
+                                                        {BigInteger.valueOf(3),BigInteger.valueOf(3)},
+                                                         {BigInteger.valueOf(3),BigInteger.valueOf(3)}};
+        Matrix<BigInteger> expected = new Matrix<BigInteger>(3, 2, rowsNcols);
+        Matrix<BigInteger> actual = matrix1.add(matrix2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void matricesOfBigDouble() {
+        Matrix<BigDecimal> matrix1 = new Matrix<BigDecimal>(3, 2);
+        matrix1.set(0, 0, BigDecimal.valueOf(1));
+        matrix1.set(0, 1, BigDecimal.valueOf(1));
+        matrix1.set(1, 0, BigDecimal.valueOf(1));
+        matrix1.set(1, 1, BigDecimal.valueOf(1));
+        matrix1.set(2, 0, BigDecimal.valueOf(1));
+        matrix1.set(2, 1, BigDecimal.valueOf(1));
+
+        Matrix<BigDecimal> matrix2 = new Matrix<BigDecimal>(3, 2);
+        matrix2.set(0, 0, BigDecimal.valueOf(2));
+        matrix2.set(0, 1, BigDecimal.valueOf(2));
+        matrix2.set(1, 0, BigDecimal.valueOf(2));
+        matrix2.set(1, 1, BigDecimal.valueOf(2));
+        matrix2.set(2, 0, BigDecimal.valueOf(2));
+        matrix2.set(2, 1, BigDecimal.valueOf(2));
+
+        //Result
+        BigDecimal[][] rowsNcols = new BigDecimal[][]{{BigDecimal.valueOf(3),BigDecimal.valueOf(3)},
+                {BigDecimal.valueOf(3),BigDecimal.valueOf(3)},
+                {BigDecimal.valueOf(3),BigDecimal.valueOf(3)}};
+        Matrix<BigDecimal> expected = new Matrix<BigDecimal>(3, 2, rowsNcols);
+        Matrix<BigDecimal> actual = matrix1.add(matrix2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void matricesOfLong() {
+        Matrix<Long> matrix1 = new Matrix<Long>(3, 2);
+        matrix1.set(0, 0, Long.valueOf(1));
+        matrix1.set(0, 1, Long.valueOf(1));
+        matrix1.set(1, 0, Long.valueOf(1));
+        matrix1.set(1, 1, Long.valueOf(1));
+        matrix1.set(2, 0, Long.valueOf(1));
+        matrix1.set(2, 1, Long.valueOf(1));
+
+        Matrix<Long> matrix2 = new Matrix<Long>(3, 2);
+        matrix2.set(0, 0, Long.valueOf(2));
+        matrix2.set(0, 1, Long.valueOf(2));
+        matrix2.set(1, 0, Long.valueOf(2));
+        matrix2.set(1, 1, Long.valueOf(2));
+        matrix2.set(2, 0, Long.valueOf(2));
+        matrix2.set(2, 1, Long.valueOf(2));
+
+        //Result
+        Long i = Long.valueOf(3);
+        Long[][] rowsNcols = new Long[][]{{i,i},{i,i},{i,i}};
+        Matrix<Long> expected = new Matrix<Long>(3, 2, rowsNcols);
+        Matrix<Long> actual = matrix1.add(matrix2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void matricesOfDouble() {
+        Matrix<Double> matrix1 = new Matrix<Double>(3, 2);
+        matrix1.set(0, 0, Double.valueOf(1));
+        matrix1.set(0, 1, Double.valueOf(1));
+        matrix1.set(1, 0, Double.valueOf(1));
+        matrix1.set(1, 1, Double.valueOf(1));
+        matrix1.set(2, 0, Double.valueOf(1));
+        matrix1.set(2, 1, Double.valueOf(1));
+
+        Matrix<Double> matrix2 = new Matrix<Double>(3, 2);
+        matrix2.set(0, 0, Double.valueOf(2));
+        matrix2.set(0, 1, Double.valueOf(2));
+        matrix2.set(1, 0, Double.valueOf(2));
+        matrix2.set(1, 1, Double.valueOf(2));
+        matrix2.set(2, 0, Double.valueOf(2));
+        matrix2.set(2, 1, Double.valueOf(2));
+
+        //Result
+        Double i = Double.valueOf(3);
+        Double[][] rowsNcols = new Double[][]{{i,i}, {i,i}, {i,i}};
+        Matrix<Double> expected = new Matrix<Double>(3, 2, rowsNcols);
+        Matrix<Double> actual = matrix1.add(matrix2);
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    public void matricesOfFloat() {
+        Matrix<Float> matrix1 = new Matrix<Float>(3, 2);
+        matrix1.set(0, 0, 1F);
+        matrix1.set(0, 1, 1F);
+        matrix1.set(1, 0, 1F);
+        matrix1.set(1, 1, 1F);
+        matrix1.set(2, 0, 1F);
+        matrix1.set(2, 1, 1F);
+
+        Matrix<Float> matrix2 = new Matrix<Float>(3, 2);
+        matrix2.set(0, 0, 2F);
+        matrix2.set(0, 1, 2F);
+        matrix2.set(1, 0, 2F);
+        matrix2.set(1, 1, 2F);
+        matrix2.set(2, 0, 2F);
+        matrix2.set(2, 1, 2F);
+
+        //Result
+        Float[][] rowsNcols = new Float[][]{{3F,3F}, {3F,3F}, {3F,3F}};
+        Matrix<Float> expected = new Matrix<Float>(3, 2, rowsNcols);
+        Matrix<Float> actual = matrix1.add(matrix2);
+
+        assertEquals(expected,actual);
+    }
+
 }
