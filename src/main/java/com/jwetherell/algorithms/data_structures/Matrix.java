@@ -15,12 +15,12 @@ import java.util.Comparator;
  */
 @SuppressWarnings("unchecked")
 public class Matrix<T extends Number> {
+    public static boolean[] visiteded = new boolean[11];
     // Start measuring branch coverage
     public static boolean[] visited = new boolean[25];
     public static boolean[] branchesVisited = new boolean[14];
     // End measuring branch coverage
-  
-    private int rows = 0;
+      private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
 
@@ -30,25 +30,36 @@ public class Matrix<T extends Number> {
          */
         @Override
         public int compare(T o1, T o2) {
+            visiteded[0] = true;
             /* TODO: What if Java adds new numeric type? */
             int result = 0;
             if (o1 instanceof BigDecimal || o2 instanceof BigDecimal) {
-                BigDecimal c1 = (BigDecimal)o1;
-                BigDecimal c2 = (BigDecimal)o2;
+                if(o1 instanceof BigDecimal) visiteded[1] = true;
+                if(o2 instanceof BigDecimal) visiteded[2] = true;
+                BigDecimal c1 = BigDecimal.valueOf(o1.intValue());
+                BigDecimal c2 = BigDecimal.valueOf(o2.intValue());
                 result = c1.compareTo(c2);
             } else if (o1 instanceof BigInteger || o2 instanceof BigInteger) {
-                BigInteger c1 = (BigInteger)o1;
-                BigInteger c2 = (BigInteger)o2;
+                if(o1 instanceof BigInteger) visiteded[3] = true;
+                if(o2 instanceof BigInteger) visiteded[4] = true;
+                BigInteger c1 = BigInteger.valueOf(o1.intValue());
+                BigInteger c2 = BigInteger.valueOf(o2.intValue());
                 result = c1.compareTo(c2);
             } else if (o1 instanceof Long || o2 instanceof Long) {
+                if(o1 instanceof Long) visiteded[5] = true;
+                if(o2 instanceof Long) visiteded[6] = true;
                 Long c1 = o1.longValue();
                 Long c2 = o2.longValue();
                 result = c1.compareTo(c2);
             } else if (o1 instanceof Double || o2 instanceof Double) {
+                if(o1 instanceof Double) visiteded[7] = true;
+                if(o2 instanceof Double) visiteded[8] = true;
                 Double c1 = o1.doubleValue();
                 Double c2 = o2.doubleValue();
                 result = c1.compareTo(c2);
             } else if (o1 instanceof Float || o2 instanceof Float) {
+                if(o1 instanceof Float) visiteded[9] = true;
+                if(o2 instanceof Float) visiteded[10] = true;
                 Float c1 = o1.floatValue();
                 Float c2 = o2.floatValue();
                 result = c1.compareTo(c2);

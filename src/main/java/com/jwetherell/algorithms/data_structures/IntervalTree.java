@@ -18,7 +18,7 @@ import java.util.Set;
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 public class IntervalTree<O extends Object> {
-
+    public static boolean[] branchesVisited;
     private Interval<O> root = null;
 
     private static final Comparator<IntervalData<?>> START_COMPARATOR = new Comparator<IntervalData<?>>() {
@@ -58,6 +58,7 @@ public class IntervalTree<O extends Object> {
      *            is a list of IntervalData objects
      */
     public IntervalTree(List<IntervalData<O>> intervals) {
+        branchesVisited = new boolean[19];
         if (intervals.size() <= 0)
             return;
 
@@ -235,34 +236,79 @@ public class IntervalTree<O extends Object> {
          *            of range to query for.
          * @return data for range.
          */
-        public IntervalData<O> query(long start, long end) {
+        public IntervalData<O> query(long start, long end) {        //1
+            branchesVisited[0] = true;
+            // System.out.println("0");
             IntervalData<O> results = null;
-            for (IntervalData<O> data : overlap) {
-                if (data.start > end)
+            for (IntervalData<O> data : overlap) {  //2
+                branchesVisited[1] = true;
+                // System.out.println("1");
+                if (data.start > end){  //3
+                    branchesVisited[2] = true;
+                    // System.out.println("2");
                     break;
+                }
                 IntervalData<O> temp = data.query(start, end);
-                if (results == null && temp != null)
+                if (results == null && temp != null){       //4, 5
+                    branchesVisited[3] = true;
+                    // System.out.println("3");
+                    branchesVisited[4] = true;
+                    // System.out.println("4");
                     results = temp;
-                else if (results != null && temp != null)
+                }   
+                else if (results != null && temp != null){     //6, 7
+                    branchesVisited[5] = true;
+                    // System.out.println("5");
+                    branchesVisited[6] = true;
+                    // System.out.println("6");
                     results.combined(temp);
+                }
             }
 
-            if (left != null && start < center) {
+            if (left != null && start < center) {   //8, 9
+                branchesVisited[7] = true;
+                // System.out.println("7");
+                branchesVisited[8] = true;
+                // System.out.println("8");
                 IntervalData<O> temp = left.query(start, end);
-                if (temp != null && results == null)
+                if (temp != null && results == null){       //10, 11
+                    branchesVisited[9] = true;
+                    // System.out.println("9");
+                    branchesVisited[10] = true;
+                    // System.out.println("10");
                     results = temp;
-                else if (results != null && temp != null)
+                }
+                else if (results != null && temp != null){  //12, 13
+                    branchesVisited[11] = true;
+                    // System.out.println("11");
+                    branchesVisited[12] = true;
+                    // System.out.println("12");
                     results.combined(temp);
+                } 
             }
 
-            if (right != null && end >= center) {
+            if (right != null && end >= center) {   //14, 15
+                branchesVisited[13] = true;
+                // System.out.println("13");
+                branchesVisited[14] = true;
+                // System.out.println("14");
                 IntervalData<O> temp = right.query(start, end);
-                if (temp != null && results == null)
+                if (temp != null && results == null){   //16, 17
+                    branchesVisited[15] = true;
+                    // System.out.println("15");
+                    branchesVisited[16] = true;
+                    // System.out.println("16");
                     results = temp;
-                else if (results != null && temp != null)
+                }
+                    
+                else if (results != null && temp != null){  //18, 19
+                    branchesVisited[17] = true;
+                    // System.out.println("17");
+                    branchesVisited[18] = true;
+                    // System.out.println("18");
                     results.combined(temp);
+                }
             }
-
             return results;
         }
 
