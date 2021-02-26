@@ -29,6 +29,7 @@ import java.util.TreeSet;
  */
 @SuppressWarnings("unchecked")
 public abstract class SegmentTree<D extends SegmentTree.Data> {
+    public static boolean[] branchesVisited = new boolean[17]; //start DIY coverage
 
     protected Segment<D> root = null;
 
@@ -333,33 +334,66 @@ public abstract class SegmentTree<D extends SegmentTree.Data> {
             }
 
             private void combined(RangeMaximumData<N> data) {
-                if (this.maximum == null && data.maximum == null)
+                branchesVisited[16]=true; //branch16
+                if (this.maximum == null && data.maximum == null) {
+                    branchesVisited[0]=true; //branch0
                     return;
-                else if (this.maximum != null && data.maximum == null)
+                }
+                else if (this.maximum != null && data.maximum == null) {
+                    branchesVisited[1]=true; //branch1
+
                     return;
-                else if (this.maximum == null && data.maximum != null)
+                }
+                else if (this.maximum == null && data.maximum != null) {
+                    branchesVisited[2]=true; //branch2
+
                     this.maximum = data.maximum;
+                }
                 else {
                     /* TODO: This is ugly */
+                    branchesVisited[14]=true; //branch14
                     if (this.maximum instanceof BigDecimal || data.maximum instanceof BigDecimal) {
-                        if (((BigDecimal)data.maximum).compareTo(((BigDecimal)this.maximum))==1)
+                        branchesVisited[3]=true; //branch3
+
+                        if (((BigDecimal)data.maximum).compareTo(((BigDecimal)this.maximum))==1) {
+                            branchesVisited[4] = true; //branch4
                             this.maximum = data.maximum;
+                        }
                     } else if (this.maximum instanceof BigInteger || data.maximum instanceof BigInteger) {
-                        if (((BigInteger)data.maximum).compareTo(((BigInteger)this.maximum))==1)
+                        branchesVisited[5]=true; //branch5
+
+                        if (((BigInteger)data.maximum).compareTo(((BigInteger)this.maximum))==1) {
+                            branchesVisited[6] = true; //branch6
                             this.maximum = data.maximum;
+                        }
                     } else if (this.maximum instanceof Long || data.maximum instanceof Long) {
-                        if (((Long)data.maximum).compareTo(((Long)this.maximum))==1)
+                        branchesVisited[7] = true; //branch7
+
+                        if (((Long)data.maximum).compareTo(((Long)this.maximum))==1) {
+                            branchesVisited[8] = true; //branch8
                             this.maximum = data.maximum;
+                        }
                     } else if (this.maximum instanceof Double || data.maximum instanceof Double) {
-                        if (((Double)data.maximum).compareTo(((Double)this.maximum))==1)
+                        branchesVisited[9] = true; //branch9
+
+                        if (((Double)data.maximum).compareTo(((Double)this.maximum))==1) {
                             this.maximum = data.maximum;
+                            branchesVisited[10] = true; //branch10
+                        }
                     } else if (this.maximum instanceof Float || data.maximum instanceof Float) {
-                        if (((Float)data.maximum).compareTo(((Float)this.maximum))==1)
+                        branchesVisited[11] = true; //branch11
+
+                        if (((Float)data.maximum).compareTo(((Float)this.maximum))==1) {
+                            branchesVisited[12] = true; //branch12
                             this.maximum = data.maximum;
+                        }
                     } else {
                         // Integer
-                        if (((Integer)data.maximum).compareTo(((Integer)this.maximum))==1)
+                        branchesVisited[15]=true; //branch15
+                        if (((Integer)data.maximum).compareTo(((Integer)this.maximum))==1) {
                             this.maximum = data.maximum;
+                            branchesVisited[13] = true; //branch13
+                        }
                     }
                 }
             }

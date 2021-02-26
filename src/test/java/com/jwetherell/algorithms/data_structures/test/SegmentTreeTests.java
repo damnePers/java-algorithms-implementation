@@ -1,19 +1,14 @@
 package com.jwetherell.algorithms.data_structures.test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.jwetherell.algorithms.data_structures.SegmentTree;
 import com.jwetherell.algorithms.data_structures.SegmentTree.Data;
 import com.jwetherell.algorithms.data_structures.SegmentTree.DynamicSegmentTree;
 import com.jwetherell.algorithms.data_structures.SegmentTree.FlatSegmentTree;
+import org.junit.Assert;
+import org.junit.Test;
+
+import java.math.BigInteger;
+import java.util.*;
 
 public class SegmentTreeTests {
 
@@ -115,6 +110,246 @@ public class SegmentTreeTests {
         assertTrue("Segment tree query error. query=7 result="+query, tree, query.maximum==7);
     }
 
+
+    //Coverage improving tests start
+    @Test
+    public void testRangeMaxSegmentTreeDouble() {
+        java.util.List<SegmentTree.Data.RangeMaximumData<Double>> segments = new ArrayList<SegmentTree.Data.RangeMaximumData<Double>>();
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(0, (Double) 4.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(1,     (Double) 2.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(2,     (Double) 6.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(3,     (Double) 3.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(4,     (Double) 1.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(5,     (Double) 5.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(6,     (Double) 0.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(7, 17, (Double) 7.0));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Double>(21,    (Double) 10.0));
+
+        // No matter which order the data is given, all tests should pass
+
+        // Initial order.
+        testRangeMaxSegmentTreeDouble(segments);
+
+        // Randomize it
+        Collections.shuffle(segments);
+        testRangeMaxSegmentTreeDouble(segments);
+
+        // Try in order
+        Collections.sort(segments);
+        testRangeMaxSegmentTreeDouble(segments);
+
+        // Try reverse order
+        Collections.sort(segments,REVERSE);
+        testRangeMaxSegmentTreeDouble(segments);
+    }
+
+    private void testRangeMaxSegmentTreeDouble(java.util.List<SegmentTree.Data.RangeMaximumData<Double>> segments) {   // Range Maximum Segment tree for Double
+        FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Double>> tree = new FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Double>>(segments, 3);
+
+        SegmentTree.Data.RangeMaximumData<Double> query = tree.query(0, 7);
+        assertTrue("Segment tree query error. query=0->7 result="+query, tree, query.maximum==7);
+
+        query = tree.query(0, 21);
+        assertTrue("Segment tree query error. query=0->21 result="+query, tree, query.maximum==10);
+
+        // bounds checking
+        {
+            // max is first
+            query = tree.query(2, 4);
+            assertTrue("Segment tree query error. query=2->4 result="+query, tree, query.maximum==6);
+
+            // max is middle
+            query = tree.query(4, 6);
+            assertTrue("Segment tree query error. query=4->6 result="+query, tree, query.maximum==5);
+
+            // max is last
+            query = tree.query(5, 7);
+            assertTrue("Segment tree query error. query=5->7 result="+query, tree, query.maximum==7);
+        }
+
+        query = tree.query(7); // stabbing
+        assertTrue("Segment tree query error. query=7 result="+query, tree, query.maximum==7);
+    }
+
+    @Test
+    public void testRangeMaxSegmentTreeLong() {
+        java.util.List<SegmentTree.Data.RangeMaximumData<Long>> segments = new ArrayList<SegmentTree.Data.RangeMaximumData<Long>>();
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(0, (Long) 4L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(1,     (Long) 2L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(2,     (Long) 6L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(3,     (Long) 3L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(4,     (Long) 1L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(5,     (Long) 5L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(6,     (Long) 0L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(7, 17, (Long) 7L));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Long>(21,    (Long) 10L));
+
+        // No matter which order the data is given, all tests should pass
+
+        // Initial order.
+        testRangeMaxSegmentTreeLong(segments);
+
+        // Randomize it
+        Collections.shuffle(segments);
+        testRangeMaxSegmentTreeLong(segments);
+
+        // Try in order
+        Collections.sort(segments);
+        testRangeMaxSegmentTreeLong(segments);
+
+        // Try reverse order
+        Collections.sort(segments,REVERSE);
+        testRangeMaxSegmentTreeLong(segments);
+    }
+
+    private void testRangeMaxSegmentTreeLong(java.util.List<SegmentTree.Data.RangeMaximumData<Long>> segments) {   // Range Maximum Segment tree for Long
+        FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Long>> tree = new FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Long>>(segments, 3);
+
+        SegmentTree.Data.RangeMaximumData<Long> query = tree.query(0, 7);
+        assertTrue("Segment tree query error. query=0->7 result="+query, tree, query.maximum==7);
+
+        query = tree.query(0, 21);
+        assertTrue("Segment tree query error. query=0->21 result="+query, tree, query.maximum==10);
+
+        // bounds checking
+        {
+            // max is first
+            query = tree.query(2, 4);
+            assertTrue("Segment tree query error. query=2->4 result="+query, tree, query.maximum==6);
+
+            // max is middle
+            query = tree.query(4, 6);
+            assertTrue("Segment tree query error. query=4->6 result="+query, tree, query.maximum==5);
+
+            // max is last
+            query = tree.query(5, 7);
+            assertTrue("Segment tree query error. query=5->7 result="+query, tree, query.maximum==7);
+        }
+
+        query = tree.query(7); // stabbing
+        assertTrue("Segment tree query error. query=7 result="+query, tree, query.maximum==7);
+    }
+
+    @Test
+    public void testRangeMaxSegmentTreeBigInteger() {
+        java.util.List<SegmentTree.Data.RangeMaximumData<BigInteger>> segments = new ArrayList<SegmentTree.Data.RangeMaximumData<BigInteger>>();
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(0, (BigInteger) BigInteger.valueOf(4)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(1,     (BigInteger) BigInteger.valueOf(2)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(2,    (BigInteger) BigInteger.valueOf(6)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(3,   (BigInteger) BigInteger.valueOf(3)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(4,     BigInteger.valueOf(1)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(5,     BigInteger.valueOf(5)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(6,     BigInteger.valueOf(0)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(7, 17, BigInteger.valueOf(7)));
+        segments.add(new SegmentTree.Data.RangeMaximumData<BigInteger>(21,    BigInteger.valueOf(10)));
+
+        // No matter which order the data is given, all tests should pass
+
+        // Initial order.
+        testRangeMaxSegmentTreeBigInteger(segments);
+
+        // Randomize it
+        Collections.shuffle(segments);
+        testRangeMaxSegmentTreeBigInteger(segments);
+
+        // Try in order
+        Collections.sort(segments);
+        testRangeMaxSegmentTreeBigInteger(segments);
+
+        // Try reverse order
+        Collections.sort(segments,REVERSE);
+        testRangeMaxSegmentTreeBigInteger(segments);
+    }
+
+    private void testRangeMaxSegmentTreeBigInteger(java.util.List<SegmentTree.Data.RangeMaximumData<BigInteger>> segments) {   // Range Maximum Segment tree for BigInteger
+        FlatSegmentTree<SegmentTree.Data.RangeMaximumData<BigInteger>> tree = new FlatSegmentTree<SegmentTree.Data.RangeMaximumData<BigInteger>>(segments, 3);
+
+        SegmentTree.Data.RangeMaximumData<BigInteger> query = tree.query(0, 7);
+        assertTrue("Segment tree query error. query=0->7 result="+query, tree, query.maximum==BigInteger.valueOf(7));
+
+        query = tree.query(0, 21);
+        assertTrue("Segment tree query error. query=0->21 result="+query, tree, query.maximum==BigInteger.TEN);
+
+        // bounds checking
+        {
+            // max is first
+            query = tree.query(2, 4);
+            assertTrue("Segment tree query error. query=2->4 result="+query, tree, query.maximum==BigInteger.valueOf(6));
+
+            // max is middle
+            query = tree.query(4, 6);
+            assertTrue("Segment tree query error. query=4->6 result="+query, tree, query.maximum==BigInteger.valueOf(5));
+
+            // max is last
+            query = tree.query(5, 7);
+            assertTrue("Segment tree query error. query=5->7 result="+query, tree, query.maximum==BigInteger.valueOf(7));
+        }
+
+        query = tree.query(7); // stabbing
+        assertTrue("Segment tree query error. query=7 result="+query, tree, query.maximum==BigInteger.valueOf(7));
+    }
+
+    @Test
+    public void testRangeMaxSegmentTreeFloat() {
+        java.util.List<SegmentTree.Data.RangeMaximumData<Float>> segments = new ArrayList<SegmentTree.Data.RangeMaximumData<Float>>();
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(0, (Float) 4f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(1, (Float) 2f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(2, (Float) 6f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(3, (Float) 3f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(4, (Float) 1f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(5, (Float) 5f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(6, (Float) 0f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(7, 17, (Float) 7f));
+        segments.add(new SegmentTree.Data.RangeMaximumData<Float>(21,(Float) 10f));
+
+        // No matter which order the data is given, all tests should pass
+
+        // Initial order.
+        testRangeMaxSegmentTreeFloat(segments);
+
+        // Randomize it
+        Collections.shuffle(segments);
+        testRangeMaxSegmentTreeFloat(segments);
+
+        // Try in order
+        Collections.sort(segments);
+        testRangeMaxSegmentTreeFloat(segments);
+
+        // Try reverse order
+        Collections.sort(segments,REVERSE);
+        testRangeMaxSegmentTreeFloat(segments);
+    }
+
+    private void testRangeMaxSegmentTreeFloat(java.util.List<SegmentTree.Data.RangeMaximumData<Float>> segments) {   // Range Maximum Segment tree for Long
+        FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Float>> tree = new FlatSegmentTree<SegmentTree.Data.RangeMaximumData<Float>>(segments, 3);
+
+        SegmentTree.Data.RangeMaximumData<Float> query = tree.query(0, 7);
+        assertTrue("Segment tree query error. query=0->7 result="+query, tree, query.maximum==7);
+
+        query = tree.query(0, 21);
+        assertTrue("Segment tree query error. query=0->21 result="+query, tree, query.maximum==10);
+
+        // bounds checking
+        {
+            // max is first
+            query = tree.query(2, 4);
+            assertTrue("Segment tree query error. query=2->4 result="+query, tree, query.maximum==6);
+
+            // max is middle
+            query = tree.query(4, 6);
+            assertTrue("Segment tree query error. query=4->6 result="+query, tree, query.maximum==5);
+
+            // max is last
+            query = tree.query(5, 7);
+            assertTrue("Segment tree query error. query=5->7 result="+query, tree, query.maximum==7);
+        }
+
+        query = tree.query(7); // stabbing
+        assertTrue("Segment tree query error. query=7 result="+query, tree, query.maximum==7);
+    }
+
+    //Coverage improving tests end
+
     @Test
     public void testRangeMinSegmentTree() {
         java.util.List<SegmentTree.Data.RangeMinimumData<Integer>> segments = new ArrayList<SegmentTree.Data.RangeMinimumData<Integer>>();
@@ -172,6 +407,7 @@ public class SegmentTreeTests {
         query = tree.query(7); // stabbing
         assertTrue("Segment tree query error. query=7 result="+query, tree, query.minimum==null);
     }
+
 
     @Test
     public void testRangeSumSegmentTree() {
