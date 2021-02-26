@@ -40,7 +40,8 @@ import org.junit.runners.Suite.SuiteClasses;
                 TrieMapTests.class,
                 zzz.class,
                 ZZZMatrixTests.class,
-                ZZZMatrixMultBranches.class
+                ZZZMatrixMultBranches.class,
+                ZZZSegmentTreeCoverageBranches.class
                }
              )
 
