@@ -93,7 +93,146 @@ public class MatrixTests {
         Matrix<Integer> matrix9 = matrix7.multiply(matrix8);
         assertTrue("Matrix multiplication error. matrix9="+matrix9+" result4"+result4, matrix9.equals(result4));
     }
-    
+
+    /*
+    Test cases for subtract task 2
+    */
+    @Test
+    public void testMatrixDifferentDimensionsSubtract() {
+        // Requirement: If the input matrix has a different dimensionality to "this" Matrix,
+        // then return a matrix of null values, with the same dimensionality of "this" Matrix:
+        int rows = 2;
+        int cols = 2;
+        int counter = 0;
+        Matrix<Integer> matrix2by2 = new Matrix<Integer>(rows, cols);
+        for (int r = 0; r < rows; r++)
+        for (int c = 0; c < cols; c++)
+        matrix2by2.set(r, c, counter++);
+
+        Integer[][] arrayDifferentSize = new Integer[][]{{1},
+        {1}};
+        Matrix<Integer> matrixDifferentSize = new Matrix<Integer>(2,1,arrayDifferentSize);
+        Matrix<Integer> matrixDifferentSizeSubtraction = matrixDifferentSize.subtract(matrix2by2);
+        // Check the top-left element is null:
+        assertTrue(matrixDifferentSizeSubtraction.get(0,0) == null);
+        // Check the number of rows and columns is the same as "this" matrix:
+        assertTrue(matrixDifferentSizeSubtraction.getRows() == matrixDifferentSize.getRows());
+        assertTrue(matrixDifferentSizeSubtraction.getCols() == matrixDifferentSize.getCols());
+    }
+
+    @Test
+    public void testMatrixDoubleSubtract() {
+        // Requirement: If a 2x2 Matrix consisting of the values 1.2 is subtracted from a 2x2 Matrix
+        // with the value 3.9, then, the result will be a 2x2 Matrix with the value 2.7:
+        Double[][] array1point2 = new Double[][]{{1.2,1.2},
+        {1.2,1.2}};
+        Matrix<Double> matrix1point2 = new Matrix<Double>(2,2,array1point2);
+        Double[][] array3point9 = new Double[][]{{3.9,3.9},
+        {3.9,3.9}};
+        Matrix<Double> matrix3point9 = new Matrix<Double>(2,2,array3point9);
+        Double[][] array2point7 = new Double[][]{{2.7,2.7},
+        {2.7,2.7}};
+        Matrix<Double> matrix2point7 = new Matrix<Double>(2,2,array2point7);
+        Matrix<Double> resultDoubleSubtraction = matrix3point9.subtract(matrix1point2);
+        assertTrue(resultDoubleSubtraction.equals(matrix2point7));
+    }
+
+    @Test
+    public void testMatrixFloatSubtract() {
+        // Requirement: If a 2x2 Float Matrix consisting of the values 1.2 is subtracted from a 2x2 Matrix
+        // with the value 3.9, then, the result will be a 2x2 Matrix with the value 2.7:
+        Float[][] array1point2 = new Float[][]{{1.2f,1.2f},
+        {1.2f,1.2f}};
+        Matrix<Float> matrix1point2 = new Matrix<Float>(2,2,array1point2);
+        Float[][] array3point9 = new Float[][]{{3.9f,3.9f},
+        {3.9f,3.9f}};
+        Matrix<Float> matrix3point9 = new Matrix<Float>(2,2,array3point9);
+        Float[][] array2point7 = new Float[][]{{2.7f,2.7f},
+        {2.7f,2.7f}};
+        Matrix<Float> matrix2point7 = new Matrix<Float>(2,2,array2point7);
+        Matrix<Float> resultDoubleSubtraction = matrix3point9.subtract(matrix1point2);
+        assertTrue(resultDoubleSubtraction.equals(matrix2point7));
+    }
+
+    @Test
+    public void testMatrixBigDecimalSubtract() {
+        // Requirement: If a 2x2 Matrix of BigDecimals with the value 1 is subtracted from a 2x2 Matrix
+        // with the value 3, then, the result will be a 2x2 Matrix with the value 2:
+        Matrix<BigDecimal> matrix1 = new Matrix<BigDecimal>(2, 2);
+        matrix1.set(0, 0, BigDecimal.valueOf(1));
+        matrix1.set(0, 1, BigDecimal.valueOf(1));
+        matrix1.set(1, 0, BigDecimal.valueOf(1));
+        matrix1.set(1, 1, BigDecimal.valueOf(1));
+
+        Matrix<BigDecimal> matrix2 = new Matrix<BigDecimal>(2, 2);
+        matrix2.set(0, 0, BigDecimal.valueOf(2));
+        matrix2.set(0, 1, BigDecimal.valueOf(2));
+        matrix2.set(1, 0, BigDecimal.valueOf(2));
+        matrix2.set(1, 1, BigDecimal.valueOf(2));
+
+        Matrix<BigDecimal> matrix3 = new Matrix<BigDecimal>(2, 2);
+        matrix3.set(0, 0, BigDecimal.valueOf(3));
+        matrix3.set(0, 1, BigDecimal.valueOf(3));
+        matrix3.set(1, 0, BigDecimal.valueOf(3));
+        matrix3.set(1, 1, BigDecimal.valueOf(3));
+
+        Matrix<BigDecimal> resultSubtraction = matrix3.subtract(matrix1);
+        assertTrue(resultSubtraction.equals(matrix2));
+    }
+
+    @Test
+    public void testMatrixBigIntegerSubtract() {
+        // Requirement: If a 2x2 Matrix of BigIntegers with the value 1 is subtracted from a 2x2 Matrix
+        // with the value 3, then, the result will be a 2x2 Matrix with the value 2:
+        Matrix<BigInteger> matrix1 = new Matrix<BigInteger>(2, 2);
+        matrix1.set(0, 0, BigInteger.valueOf(1));
+        matrix1.set(0, 1, BigInteger.valueOf(1));
+        matrix1.set(1, 0, BigInteger.valueOf(1));
+        matrix1.set(1, 1, BigInteger.valueOf(1));
+
+        Matrix<BigInteger> matrix2 = new Matrix<BigInteger>(2, 2);
+        matrix2.set(0, 0, BigInteger.valueOf(2));
+        matrix2.set(0, 1, BigInteger.valueOf(2));
+        matrix2.set(1, 0, BigInteger.valueOf(2));
+        matrix2.set(1, 1, BigInteger.valueOf(2));
+
+        Matrix<BigInteger> matrix3 = new Matrix<BigInteger>(2, 2);
+        matrix3.set(0, 0, BigInteger.valueOf(3));
+        matrix3.set(0, 1, BigInteger.valueOf(3));
+        matrix3.set(1, 0, BigInteger.valueOf(3));
+        matrix3.set(1, 1, BigInteger.valueOf(3));
+
+        Matrix<BigInteger> resultSubtraction = matrix3.subtract(matrix1);
+        assertTrue(resultSubtraction.equals(matrix2));
+    }
+
+
+    @Test
+    public void testMatrixLongSubtract() {
+        // Requirement: If a 2x2 Matrix of Longs with the value 1 is subtracted from a 2x2 Matrix
+        // with the value 3, then, the result will be a 2x2 Matrix with the value 2:
+        Matrix<Long> matrix1 = new Matrix<Long>(2, 2);
+        matrix1.set(0, 0, Long.valueOf(1));
+        matrix1.set(0, 1, Long.valueOf(1));
+        matrix1.set(1, 0, Long.valueOf(1));
+        matrix1.set(1, 1, Long.valueOf(1));
+
+        Matrix<Long> matrix2 = new Matrix<Long>(2, 2);
+        matrix2.set(0, 0, Long.valueOf(2));
+        matrix2.set(0, 1, Long.valueOf(2));
+        matrix2.set(1, 0, Long.valueOf(2));
+        matrix2.set(1, 1, Long.valueOf(2));
+
+        Matrix<Long> matrix3 = new Matrix<Long>(2, 2);
+        matrix3.set(0, 0, Long.valueOf(3));
+        matrix3.set(0, 1, Long.valueOf(3));
+        matrix3.set(1, 0, Long.valueOf(3));
+        matrix3.set(1, 1, Long.valueOf(3));
+
+        Matrix<Long> resultSubtraction = matrix3.subtract(matrix1);
+        assertTrue(resultSubtraction.equals(matrix2));
+    }
+
     @Test
     public void testIdentityMethod1() {
         Matrix<Integer> matrix = new Matrix<Integer>(2, 2);
@@ -101,19 +240,19 @@ public class MatrixTests {
         matrix.set(0, 1, 0);
         matrix.set(1, 0, 0);
         matrix.set(1, 1, 0);
-        
+
         Matrix<Integer> expectedResult = new Matrix<Integer>(2, 2);
         expectedResult.set(0, 0, 1);
         expectedResult.set(0, 1, 0);
         expectedResult.set(1, 0, 0);
         expectedResult.set(1, 1, 1);
-        
+
         try{
-        	matrix = matrix.identity();
+            matrix = matrix.identity();
         } catch(Exception ex){
-        	fail();
+            fail();
         }
-        
+
         assertArrayEquals(expectedResult.getRow(0), matrix.getRow(0));
         assertArrayEquals(expectedResult.getRow(1), matrix.getRow(1));
     }
@@ -190,6 +329,10 @@ public class MatrixTests {
         assertTrue("Matrix multiplication error. matrix18="+matrix18+" result8"+result8, matrix18.equals(result8));
     }
 
+    /*
+    Test cases for add task 2
+    */
+
     @Test
     public void notSameNumberOfRowsAndCols() {
         Matrix<Integer> matrix1 = new Matrix<Integer>(3, 2);
@@ -213,7 +356,7 @@ public class MatrixTests {
             @Override
             public void run() throws Throwable {
                 matrix1.add(matrix2);}
-        });
+            });
     }
 
     @Test
@@ -236,8 +379,8 @@ public class MatrixTests {
 
         //Result
         BigInteger[][] rowsNcols = new BigInteger[][]{{BigInteger.valueOf(3),BigInteger.valueOf(3)},
-                                                        {BigInteger.valueOf(3),BigInteger.valueOf(3)},
-                                                         {BigInteger.valueOf(3),BigInteger.valueOf(3)}};
+        {BigInteger.valueOf(3),BigInteger.valueOf(3)},
+        {BigInteger.valueOf(3),BigInteger.valueOf(3)}};
         Matrix<BigInteger> expected = new Matrix<BigInteger>(3, 2, rowsNcols);
         Matrix<BigInteger> actual = matrix1.add(matrix2);
 
@@ -264,8 +407,8 @@ public class MatrixTests {
 
         //Result
         BigDecimal[][] rowsNcols = new BigDecimal[][]{{BigDecimal.valueOf(3),BigDecimal.valueOf(3)},
-                {BigDecimal.valueOf(3),BigDecimal.valueOf(3)},
-                {BigDecimal.valueOf(3),BigDecimal.valueOf(3)}};
+        {BigDecimal.valueOf(3),BigDecimal.valueOf(3)},
+        {BigDecimal.valueOf(3),BigDecimal.valueOf(3)}};
         Matrix<BigDecimal> expected = new Matrix<BigDecimal>(3, 2, rowsNcols);
         Matrix<BigDecimal> actual = matrix1.add(matrix2);
 
@@ -359,7 +502,7 @@ public class MatrixTests {
         m1.set(0, 1, new BigDecimal(0));
         m1.set(1, 0, new BigDecimal(0));
         m1.set(1, 1, new BigDecimal(1));
-        
+
         Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
         m2.set(0, 0, 1);
         m2.set(0, 1, 0);
@@ -376,7 +519,7 @@ public class MatrixTests {
         m1.set(0, 1, BigInteger.valueOf(0));
         m1.set(1, 0, BigInteger.valueOf(0));
         m1.set(1, 1, BigInteger.valueOf(1));
-        
+
         Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
         m2.set(0, 0, 1);
         m2.set(0, 1, 0);
@@ -393,7 +536,7 @@ public class MatrixTests {
         m1.set(0, 1, 0L);
         m1.set(1, 0, 0L);
         m1.set(1, 1, 1L);
-        
+
         Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
         m2.set(0, 0, 1);
         m2.set(0, 1, 0);
@@ -410,7 +553,7 @@ public class MatrixTests {
         m1.set(0, 1, 0.0);
         m1.set(1, 0, 0.0);
         m1.set(1, 1, 1.0);
-        
+
         Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
         m2.set(0, 0, 1);
         m2.set(0, 1, 0);
@@ -427,7 +570,7 @@ public class MatrixTests {
         m1.set(0, 1, 0f);
         m1.set(1, 0, 0f);
         m1.set(1, 1, 1f);
-        
+
         Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
         m2.set(0, 0, 1);
         m2.set(0, 1, 0);

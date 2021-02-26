@@ -19,8 +19,10 @@ public class Matrix<T extends Number> {
     // Start measuring branch coverage
     public static boolean[] visited = new boolean[25];
     public static boolean[] branchesVisited = new boolean[14];
+    public static boolean[] subtractBranchesVisited = new boolean[15];
     // End measuring branch coverage
-      private int rows = 0;
+
+    private int rows = 0;
     private int cols = 0;
     private T[] matrix = null;
 
@@ -232,41 +234,68 @@ public class Matrix<T extends Number> {
     }
 
     public Matrix<T> subtract(Matrix<T> input) {
+        subtractBranchesVisited[0] = true;
         Matrix<T> output = new Matrix<T>(this.rows, this.cols);
-        if ((this.cols != input.cols) || (this.rows != input.rows))
+        if ((this.cols != input.cols) || (this.rows != input.rows)) {
+            subtractBranchesVisited[1] = true;
             return output;
+        } else {
+            subtractBranchesVisited[2] = true;
+        }
 
-        for (int r = 0; r < output.rows; r++) {
-            for (int c = 0; c < output.cols; c++) {
-                for (int i = 0; i < cols; i++) {
+        int r = 0;
+        for (r = 0; r < output.rows; r++) {
+            subtractBranchesVisited[3] = true;
+            int c = 0;
+            for (c = 0; c < output.cols; c++) {
+                subtractBranchesVisited[4] = true;
+                int i = 0;
+                for (i = 0; i < cols; i++) {
+                    subtractBranchesVisited[5] = true;
                     T m1 = this.get(r, c);
                     T m2 = input.get(r, c);
                     T result;
                     /* TODO: This is ugly and how to handle number overflow? */
                     if (m1 instanceof BigDecimal || m2 instanceof BigDecimal) {
+                        subtractBranchesVisited[6] = true;
                         BigDecimal result2 = ((BigDecimal)m1).subtract((BigDecimal)m2);
                         result = (T)result2;
                     } else if (m1 instanceof BigInteger || m2 instanceof BigInteger) {
+                        subtractBranchesVisited[7] = true;
                         BigInteger result2 = ((BigInteger)m1).subtract((BigInteger)m2);
                         result = (T)result2;
                     } else if (m1 instanceof Long || m2 instanceof Long) {
+                        subtractBranchesVisited[8] = true;
                         Long result2 = (m1.longValue() - m2.longValue());
                         result = (T)result2;
                     } else if (m1 instanceof Double || m2 instanceof Double) {
+                        subtractBranchesVisited[9] = true;
                         Double result2 = (m1.doubleValue() - m2.doubleValue());
                         result = (T)result2;
                     } else if (m1 instanceof Float || m2 instanceof Float) {
+                        subtractBranchesVisited[10] = true;
                         Float result2 = (m1.floatValue() - m2.floatValue());
                         result = (T)result2;
                     } else {
+                        subtractBranchesVisited[11] = true;
                         // Integer
                         Integer result2 = (m1.intValue() - m2.intValue());
                         result = (T)result2;
                     }
                     output.set(r, c, result);
                 }
+                if (i >= cols) {
+                    subtractBranchesVisited[12] = true;
+                }
+            }
+            if (c >= output.cols) {
+                subtractBranchesVisited[13] = true;
             }
         }
+        if (r >= output.rows) {
+            subtractBranchesVisited[14] = true;
+        }
+
         return output;
     }
 

@@ -20,4 +20,17 @@ public class ZZZMatrixMultBranches {
         System.out.println("Total: \t\t\t"+Matrix.visited.length);
         System.out.println("Percentage: \t"+percentage*100+"%");
       }
+
+      @Test
+      public void testNumBranchesSubtract() {
+          int numVisited = 0;
+          for (boolean b : Matrix.subtractBranchesVisited) {
+              if (b) numVisited++;
+          }
+          double percentage = (double) numVisited/Matrix.subtractBranchesVisited.length;
+          System.out.println("Branch Coverage for Matrix - subtract");
+          System.out.println("Visited: \t\t"+numVisited);
+          System.out.println("Total: \t\t\t"+Matrix.subtractBranchesVisited.length);
+          System.out.println("Percentage: \t"+percentage*100+"%");
+      }
 }
