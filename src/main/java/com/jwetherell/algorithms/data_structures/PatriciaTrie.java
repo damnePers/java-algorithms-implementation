@@ -61,36 +61,36 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
      * @return Node which represents the sequence in the trie or NULL if the
      *         sequence already exists.
      */
-    protected Node addSequence(C seq) {
-        if (root == null)
+    protected Node addSequence(C seq) {     //1
+        if (root == null)   //2
             root = this.creator.createNewNode(null, null, BLACK);
 
         int indexIntoParent = -1;
         int indexIntoString = -1;
         Node node = root;
-        for (int i = 0; i <= seq.length();) {
+        for (int i = 0; i <= seq.length();) {   //3
             indexIntoString = i;
             indexIntoParent++;
-            if (i == seq.length())
+            if (i == seq.length())  //4
                 break;
 
             char c = seq.charAt(i);
-            if (node.partOfThis(c, indexIntoParent)) {
+            if (node.partOfThis(c, indexIntoParent)) {  //5
                 // Node has a char which is equal to char c at that index
                 i++;
                 continue;
-            } else if (node.string != null && indexIntoParent < node.string.length) {
+            } else if (node.string != null && indexIntoParent < node.string.length) {   //6
                 // string is equal to part of this Node's string
                 break;
             }
 
             Node child = node.getChildBeginningWithChar(c);
-            if (child != null) {
+            if (child != null) {    //7
                 // Found a child node starting with char c
                 indexIntoParent = 0;
                 node = child;
                 i++;
-            } else {
+            } else {    //8
                 // Node doesn't have a child starting with char c
                 break;
             }
@@ -98,19 +98,19 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
         Node addedNode = null;
         Node parent = node.parent;
-        if (node.string != null && indexIntoParent < node.string.length) {
+        if (node.string != null && indexIntoParent < node.string.length) {  //9
             char[] parentString = Arrays.copyOfRange(node.string, 0, indexIntoParent);
             char[] refactorString = Arrays.copyOfRange(node.string, indexIntoParent, node.string.length);
 
-            if (indexIntoString < seq.length()) {
+            if (indexIntoString < seq.length()) {   //10
                 // Creating a new parent by splitting a previous node and adding a new node
 
                 // Create new parent
-                if (parent != null) 
+                if (parent != null)     //11
                     parent.removeChild(node);
 
                 Node newParent = this.creator.createNewNode(parent, parentString, BLACK);
-                if (parent != null)
+                if (parent != null)     //12
                     parent.addChild(newParent);
 
                 // Convert the previous node into a child of the new parent
@@ -126,13 +126,13 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
 
                 // New node which was added
                 addedNode = newNode2;
-            } else {
+            } else {    //14
                 // Creating a new parent by splitting a previous node and converting the previous node
-                if (parent != null)
+                if (parent != null) //14
                     parent.removeChild(node);
 
                 Node newParent = this.creator.createNewNode(parent, parentString, WHITE);
-                if (parent != null)
+                if (parent != null)     //15
                     parent.addChild(newParent);
 
                 // Parent node was created
@@ -144,23 +144,23 @@ public class PatriciaTrie<C extends CharSequence> implements ITree<C> {
                 newNode1.string = refactorString;
                 newParent.addChild(newNode1);
             }
-        } else if (node.string != null && seq.length() == indexIntoString) {
+        } else if (node.string != null && seq.length() == indexIntoString) {    //16
             // Found a node who exactly matches a previous node
 
             // Already exists as a white node (leaf node)
-            if (node.type == WHITE)
+            if (node.type == WHITE)     //17
                 return null;
 
             // Was black (branching), now white (leaf)
             node.type = WHITE;
             addedNode = node;
-        } else if (node.string != null) {
+        } else if (node.string != null) {   //18
             // Adding a child
             CharSequence newString = seq.subSequence(indexIntoString, seq.length());
             Node newNode = this.creator.createNewNode(node, newString.toString().toCharArray(), WHITE);
             node.addChild(newNode);
             addedNode = newNode;
-        } else {
+        } else {    //19
             // Add to root node
             Node newNode = this.creator.createNewNode(node, seq.toString().toCharArray(), WHITE);
             node.addChild(newNode);

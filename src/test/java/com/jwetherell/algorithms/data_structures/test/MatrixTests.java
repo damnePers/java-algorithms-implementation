@@ -1,15 +1,17 @@
 package com.jwetherell.algorithms.data_structures.test;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import org.junit.Test;
-import java.math.BigDecimal;
-
-import com.jwetherell.algorithms.data_structures.Matrix;
 import org.junit.function.ThrowingRunnable;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-import static org.junit.Assert.*;
+import com.jwetherell.algorithms.data_structures.Matrix;
+
 
 public class MatrixTests {
 
@@ -104,11 +106,11 @@ public class MatrixTests {
         int counter = 0;
         Matrix<Integer> matrix2by2 = new Matrix<Integer>(rows, cols);
         for (int r = 0; r < rows; r++)
-            for (int c = 0; c < cols; c++)
-                matrix2by2.set(r, c, counter++);
+        for (int c = 0; c < cols; c++)
+        matrix2by2.set(r, c, counter++);
 
         Integer[][] arrayDifferentSize = new Integer[][]{{1},
-                                                         {1}};
+        {1}};
         Matrix<Integer> matrixDifferentSize = new Matrix<Integer>(2,1,arrayDifferentSize);
         Matrix<Integer> matrixDifferentSizeSubtraction = matrixDifferentSize.subtract(matrix2by2);
         // Check the top-left element is null:
@@ -123,13 +125,13 @@ public class MatrixTests {
         // Requirement: If a 2x2 Matrix consisting of the values 1.2 is subtracted from a 2x2 Matrix
         // with the value 3.9, then, the result will be a 2x2 Matrix with the value 2.7:
         Double[][] array1point2 = new Double[][]{{1.2,1.2},
-                                                 {1.2,1.2}};
+        {1.2,1.2}};
         Matrix<Double> matrix1point2 = new Matrix<Double>(2,2,array1point2);
         Double[][] array3point9 = new Double[][]{{3.9,3.9},
-                                                 {3.9,3.9}};
+        {3.9,3.9}};
         Matrix<Double> matrix3point9 = new Matrix<Double>(2,2,array3point9);
         Double[][] array2point7 = new Double[][]{{2.7,2.7},
-                                                 {2.7,2.7}};
+        {2.7,2.7}};
         Matrix<Double> matrix2point7 = new Matrix<Double>(2,2,array2point7);
         Matrix<Double> resultDoubleSubtraction = matrix3point9.subtract(matrix1point2);
         assertTrue(resultDoubleSubtraction.equals(matrix2point7));
@@ -140,13 +142,13 @@ public class MatrixTests {
         // Requirement: If a 2x2 Float Matrix consisting of the values 1.2 is subtracted from a 2x2 Matrix
         // with the value 3.9, then, the result will be a 2x2 Matrix with the value 2.7:
         Float[][] array1point2 = new Float[][]{{1.2f,1.2f},
-                                               {1.2f,1.2f}};
+        {1.2f,1.2f}};
         Matrix<Float> matrix1point2 = new Matrix<Float>(2,2,array1point2);
         Float[][] array3point9 = new Float[][]{{3.9f,3.9f},
-                                                 {3.9f,3.9f}};
+        {3.9f,3.9f}};
         Matrix<Float> matrix3point9 = new Matrix<Float>(2,2,array3point9);
         Float[][] array2point7 = new Float[][]{{2.7f,2.7f},
-                                                 {2.7f,2.7f}};
+        {2.7f,2.7f}};
         Matrix<Float> matrix2point7 = new Matrix<Float>(2,2,array2point7);
         Matrix<Float> resultDoubleSubtraction = matrix3point9.subtract(matrix1point2);
         assertTrue(resultDoubleSubtraction.equals(matrix2point7));
@@ -231,79 +233,6 @@ public class MatrixTests {
         assertTrue(resultSubtraction.equals(matrix2));
     }
 
-    /*
-    Added test cases for multiply task 2
-    */
-    @Test
-    public void testMatrixBigDecimal() {
-        BigDecimal bd1, bd2, bd3, bd4;
-        bd1 = new BigDecimal(1);
-        bd2 = new BigDecimal(2);
-        bd3 = new BigDecimal(3);
-        bd4 = new BigDecimal(4);
-        Matrix<BigDecimal> matrix7 = new Matrix<BigDecimal>(2, 2);
-        matrix7.set(0, 0, bd1);
-        matrix7.set(0, 1, bd2);
-        matrix7.set(1, 0, bd3);
-        matrix7.set(1, 1, bd4);
-
-        bd1 = new BigDecimal(7);
-        bd2 = new BigDecimal(10);
-        bd3 = new BigDecimal(15);
-        bd4 = new BigDecimal(22);
-        BigDecimal[][] array4 = new BigDecimal[][]{{bd1,bd2},
-        {bd3,bd4}};
-        Matrix<BigDecimal> result4 = new Matrix<BigDecimal>(2,2,array4);
-        Matrix<BigDecimal> matrix8 = matrix7.multiply(matrix7);
-        assertTrue("Matrix multiplication error. matrix8="+matrix8+" result4"+result4, matrix8.equals(result4));
-    }
-    @Test
-    public void testMatrixDouble() {
-        //Test Matrix<double>
-        Matrix<Double> matrix13 = new Matrix<Double>(2, 2);
-        matrix13.set(0, 0, 1d);
-        matrix13.set(0, 1, 2d);
-        matrix13.set(1, 0, 3d);
-        matrix13.set(1, 1, 4d);
-        // Result of multiplication
-        Double[][] array6 = new Double[][]{{7.0,10.0},
-        {15.0,22.0}};
-        Matrix<Double> result6 = new Matrix<Double>(2,2,array6);
-        Matrix<Double> matrix14 = matrix13.multiply(matrix13);
-        assertTrue("Matrix multiplication error. matrix14="+matrix14+" result6"+result6, matrix14.equals(result6));
-    }
-    @Test
-    public void testMatrixLong() {
-        //Test Matrix<Long>
-        Matrix<Long> matrix15 = new Matrix<Long>(2, 2);
-        matrix15.set(0, 0, 1l);
-        matrix15.set(0, 1, 2l);
-        matrix15.set(1, 0, 3l);
-        matrix15.set(1, 1, 4l);
-        // Result of multiplication
-        Long[][] array7 = new Long[][]{{7l,10l},
-        {15l,22l}};
-        Matrix<Long> result7 = new Matrix<Long>(2,2,array7);
-        Matrix<Long> matrix16 = matrix15.multiply(matrix15);
-        assertTrue("Matrix multiplication error. matrix16="+matrix16+" result7"+result7, matrix16.equals(result7));
-    }
-    @Test
-    public void testMatrixFloat() {
-        //Test Matrix<Float>
-        Matrix<Float> matrix17 = new Matrix<Float>(2, 2);
-        matrix17.set(0, 0, 1f);
-        matrix17.set(0, 1, 2f);
-        matrix17.set(1, 0, 3f);
-        matrix17.set(1, 1, 4f);
-        // Result of multiplication
-        Float[][] array8 = new Float[][]{{7f,10f},
-        {15f,22f}};
-        Matrix<Float> result8 = new Matrix<Float>(2,2,array8);
-        Matrix<Float> matrix18 = matrix17.multiply(matrix17);
-        assertTrue("Matrix multiplication error. matrix18="+matrix18+" result8"+result8, matrix18.equals(result8));
-    }
-
-
     @Test
     public void testIdentityMethod1() {
         Matrix<Integer> matrix = new Matrix<Integer>(2, 2);
@@ -328,6 +257,77 @@ public class MatrixTests {
         assertArrayEquals(expectedResult.getRow(1), matrix.getRow(1));
     }
 
+    /*
+      Added test cases for multiply task 2
+    */
+    @Test
+    public void testMatrixBigDecimal() {
+        BigDecimal bd1, bd2, bd3, bd4;
+        bd1 = new BigDecimal(1);
+        bd2 = new BigDecimal(2);
+        bd3 = new BigDecimal(3);
+        bd4 = new BigDecimal(4);
+        Matrix<BigDecimal> matrix7 = new Matrix<BigDecimal>(2, 2);
+        matrix7.set(0, 0, bd1);
+        matrix7.set(0, 1, bd2);
+        matrix7.set(1, 0, bd3);
+        matrix7.set(1, 1, bd4);
+
+        bd1 = new BigDecimal(7);
+        bd2 = new BigDecimal(10);
+        bd3 = new BigDecimal(15);
+        bd4 = new BigDecimal(22);
+        BigDecimal[][] array4 = new BigDecimal[][]{{bd1,bd2},
+                                              {bd3,bd4}};
+        Matrix<BigDecimal> result4 = new Matrix<BigDecimal>(2,2,array4);
+        Matrix<BigDecimal> matrix8 = matrix7.multiply(matrix7);
+        assertTrue("Matrix multiplication error. matrix8="+matrix8+" result4"+result4, matrix8.equals(result4));
+    }
+    @Test
+    public void testMatrixDouble() {
+        //Test Matrix<double>
+        Matrix<Double> matrix13 = new Matrix<Double>(2, 2);
+        matrix13.set(0, 0, 1d);
+        matrix13.set(0, 1, 2d);
+        matrix13.set(1, 0, 3d);
+        matrix13.set(1, 1, 4d);
+        // Result of multiplication
+        Double[][] array6 = new Double[][]{{7.0,10.0},
+                                            {15.0,22.0}};
+        Matrix<Double> result6 = new Matrix<Double>(2,2,array6);
+        Matrix<Double> matrix14 = matrix13.multiply(matrix13);
+        assertTrue("Matrix multiplication error. matrix14="+matrix14+" result6"+result6, matrix14.equals(result6));
+    }
+    @Test
+    public void testMatrixLong() {
+        //Test Matrix<Long>
+        Matrix<Long> matrix15 = new Matrix<Long>(2, 2);
+        matrix15.set(0, 0, 1l);
+        matrix15.set(0, 1, 2l);
+        matrix15.set(1, 0, 3l);
+        matrix15.set(1, 1, 4l);
+        // Result of multiplication
+        Long[][] array7 = new Long[][]{{7l,10l},
+                                        {15l,22l}};
+        Matrix<Long> result7 = new Matrix<Long>(2,2,array7);
+        Matrix<Long> matrix16 = matrix15.multiply(matrix15);
+        assertTrue("Matrix multiplication error. matrix16="+matrix16+" result7"+result7, matrix16.equals(result7));
+    }
+    @Test
+    public void testMatrixFloat() {
+        //Test Matrix<Float>
+        Matrix<Float> matrix17 = new Matrix<Float>(2, 2);
+        matrix17.set(0, 0, 1f);
+        matrix17.set(0, 1, 2f);
+        matrix17.set(1, 0, 3f);
+        matrix17.set(1, 1, 4f);
+        // Result of multiplication
+        Float[][] array8 = new Float[][]{{7f,10f},
+                                        {15f,22f}};
+        Matrix<Float> result8 = new Matrix<Float>(2,2,array8);
+        Matrix<Float> matrix18 = matrix17.multiply(matrix17);
+        assertTrue("Matrix multiplication error. matrix18="+matrix18+" result8"+result8, matrix18.equals(result8));
+    }
 
     /*
     Test cases for add task 2
@@ -495,4 +495,89 @@ public class MatrixTests {
         assertEquals(expected,actual);
     }
 
+    @Test
+    public void testCompareMethodBigDecimal() {
+        Matrix<BigDecimal> m1 = new Matrix<BigDecimal>(2, 2);
+        m1.set(0, 0, new BigDecimal(1));
+        m1.set(0, 1, new BigDecimal(0));
+        m1.set(1, 0, new BigDecimal(0));
+        m1.set(1, 1, new BigDecimal(1));
+
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodBigInteger() {
+        Matrix<BigInteger> m1 = new Matrix<BigInteger>(2, 2);
+        m1.set(0, 0, BigInteger.valueOf(1));
+        m1.set(0, 1, BigInteger.valueOf(0));
+        m1.set(1, 0, BigInteger.valueOf(0));
+        m1.set(1, 1, BigInteger.valueOf(1));
+
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodLong() {
+        Matrix<Long> m1 = new Matrix<Long>(2, 2);
+        m1.set(0, 0, 1L);
+        m1.set(0, 1, 0L);
+        m1.set(1, 0, 0L);
+        m1.set(1, 1, 1L);
+
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodDouble() {
+        Matrix<Double> m1 = new Matrix<Double>(2, 2);
+        m1.set(0, 0, 1.0);
+        m1.set(0, 1, 0.0);
+        m1.set(1, 0, 0.0);
+        m1.set(1, 1, 1.0);
+
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
+    @Test
+    public void testCompareMethodFloat() {
+        Matrix<Float> m1 = new Matrix<Float>(2, 2);
+        m1.set(0, 0, 1f);
+        m1.set(0, 1, 0f);
+        m1.set(1, 0, 0f);
+        m1.set(1, 1, 1f);
+
+        Matrix<Integer> m2 = new Matrix<Integer>(2, 2);
+        m2.set(0, 0, 1);
+        m2.set(0, 1, 0);
+        m2.set(1, 0, 0);
+        m2.set(1, 1, 1);
+
+        assertTrue(m1.equals(m2));
+        assertTrue(m2.equals(m1));
+    }
 }
